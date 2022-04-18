@@ -1,22 +1,31 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import useInput from '../../hooks/useInput'
+import { resumeActions } from '../../store/user-info-slice'
 import Button from '../../UI/Button/Button'
 import './ExperienceForm.css'
 
 function ExperienceForm() {
+	const navigate=useNavigate()
+	const dispatch=useDispatch()
 	const experience=useInput({
 		title:'',
 		employer:'',
 		city:'',
 		country:'',
 		startDate:'',
-		endDate:''
+		endDate:'',
+		id:Math.random().toString()
 	})
-
 	const [showCountry,setShowCountry]=useState(false)
 
 	const showCountryHandler=()=>{
 		setShowCountry(prevState=>!prevState)
+	}
+	const sendExperienceHandler=()=>{
+		dispatch(resumeActions.experienceInfo(experience.value))
+		navigate('/skills')
 	}
 	return (
 		<div className='main-funnel'>
@@ -69,7 +78,7 @@ function ExperienceForm() {
 			</div>
 			<div className='btn'>
 				<Button className='back'>BACK</Button>
-				<Button className='next'>CONTINUE</Button>
+				<Button className='next' onClick={sendExperienceHandler}>CONTINUE</Button>
 			</div>
 		</div>
 	)

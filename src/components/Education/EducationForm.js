@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import useInput from '../../hooks/useInput'
+import { resumeActions } from '../../store/user-info-slice'
 import Button from '../../UI/Button/Button'
 import './EducationForm.css'
 
 function EducationForm() {
+	const navigate=useNavigate()
+	const dispatch=useDispatch()
 	const edu = useInput({
 		school: '',
 		city: '',
@@ -11,14 +16,16 @@ function EducationForm() {
 		degree: '',
 		fieldOfStudy: '',
 		date: '',
+		id:Math.random().toString()
 	})
 	const [showCountry, setShowCountry] = useState(false)
 
 	const showCountryHandler = () => {
 		setShowCountry((prevState) => !prevState)
 	}
-	const handler = () => {
-		console.log(edu.value)
+	const educationInfoHandler = () => {
+		dispatch(resumeActions.educationInfo(edu.value))
+		navigate('/experience')
 	}
 	return (
 		<div className='main-funnel'>
@@ -118,7 +125,7 @@ function EducationForm() {
 			</div>
 			<div className='btn'>
 				<Button className='back'>BACK</Button>
-				<Button className='next' onClick={handler}>
+				<Button className='next' onClick={educationInfoHandler}>
 					CONTINUE
 				</Button>
 			</div>
