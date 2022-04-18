@@ -1,0 +1,45 @@
+.resume{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+.header-resume{
+    width: 100%;
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #012b35;
+    align-items: center;
+}
+.btn-div{
+    margin-right: 40px;
+}
+.btn-download{
+    width: 187px;
+	height: 50px;
+	border-style: none;
+	background: #00c293;
+	color: #fff;
+	border: 0.8px solid grey;
+	cursor: pointer;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%),
+    0 1px 3px 0 rgb(0 0 0 / 12%);
+    font-size: 20px;
+}
+.title{
+    margin-left: 50px;
+}
+.title-name{
+    width: 187px;
+	height: 50px;
+	border-style: none;
+	background: #012b35;
+	color: #fff;
+	cursor: pointer;
+    border-radius: 3px;
+    font-size: 30px;
+}
+.btn-download:hover{
+    opacity: 0.9;
+}

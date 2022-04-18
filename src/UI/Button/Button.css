@@ -1,0 +1,39 @@
+/* .button{
+    width: 430px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+} */
+.back{
+    width: 187px;
+    height: 50px;
+    border-style: none;
+    background-color: whitesmoke;
+    border: 0.8px solid grey;
+    cursor: pointer;
+}
+.back:hover{
+    opacity: 0.9;
+}
+.next{
+    width: 187px;
+    height: 50px;
+    border-style: none;
+    background: #00c293;
+    color: #fff;
+    border: 0.8px solid grey;
+    cursor: pointer;
+}
+.next:hover{
+    opacity: 0.9;
+}
+.add{
+    width: 70px;
+    height: 35px;
+    border-style: none;
+    background: #00c293;
+    color: #fff;
+    border: 0.8px solid grey;
+    cursor: pointer;
+    margin-left: 5px;
+}

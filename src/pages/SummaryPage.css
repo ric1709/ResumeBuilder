@@ -1,0 +1,8 @@
+.img-summary{
+    width: 505px;
+    height: 100%;
+}
+.summary-wrapper{
+    display: flex;
+	justify-content: space-between;
+}

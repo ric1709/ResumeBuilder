@@ -1,0 +1,41 @@
+.main-funnel{
+    width: 605px;
+    height: 430px;
+    padding: 40px;
+    position: relative;
+    top: 50px;
+    left: 100px;
+    /* margin: 50px 80px; */
+}
+.h1{
+    width: 430px;
+    height: 72px;
+    font-size: 30px;
+    margin: 0  0 10px;
+}
+.question{
+    width: 100%;
+    height: 22px;
+    margin: 0 0 10px;
+}
+.contact-input-div{
+    width: 430px;
+    height: 65px;
+    font-size: 14px;
+
+}
+.contact-input-div label{
+    font-weight: 600;
+}
+.contact-input{
+    width: 100%;
+    height: 30px;
+    border: 0.5px solid grey;
+    margin-top: 3px;
+}
+.btn{
+    width: 430px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}

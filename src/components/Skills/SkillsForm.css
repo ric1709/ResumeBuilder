@@ -1,0 +1,55 @@
+.skills-main-funnel{
+    width: 605px;
+    height: 430px;
+    padding: 40px;
+    position: relative;
+    top: 50px;
+    left: 100px;
+}
+.skills-h1{
+    width: 430px;
+    height: 72px;
+    font-size: 30px;
+    margin: 0  0 10px;
+}
+.skills-p{
+    width: 100%;
+    height: 22px;
+    margin: 0 0 10px;
+}
+.skills-input-div{
+    width: 430px;
+    height: 65px;
+    font-size: 14px;
+
+}
+.skills-input-div label{
+    font-weight: 600;
+}
+.skills-input{
+    width: 350px;
+    height: 30px;
+    border: 0.5px solid grey;
+    margin-top: 3px;
+}
+.skills-select {
+	width: 100%;
+	height: 35px;
+	border: 0.5px solid grey;
+	margin-top: 3px;
+}
+.skills-input-div {
+	width: 430px;
+	height: 65px;
+	font-size: 14px;
+}
+.select {
+	width: 435px;
+	height: 70px;
+}
+.btn{
+    width: 430px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}

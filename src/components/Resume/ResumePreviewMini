@@ -1,0 +1,50 @@
+.wrapper-preview {
+	width: 320px;
+	height: 530px;
+	background-color: whitesmoke;
+	color: black;
+	display: flex;
+	flex-direction: column;
+	padding: 20px 60px;
+    box-shadow: 0 1px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%),
+    0 1px 3px 0 rgb(0 0 0 / 12%);
+    font-size: 9px;
+    position: absolute;
+    left: 750px;
+    top: 140px;
+    z-index: 100;
+    overflow: hidden;
+}
+.contact-info {
+	display: flex;
+}
+.skill-list {
+    text-align: center;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+}
+.summary-item li{
+    margin-top: 10px;
+    padding-top: 15px;
+}
+.position-date{
+    display: flex;
+    justify-content: space-between;
+    height: 25px;
+}
+.experience-address{
+    display: flex;
+    height: 20px;
+    margin-bottom: 15px;
+}
+.education-item{
+    display: flex;
+    justify-content: space-between;
+    height: 25px;
+}
+.education-address{
+    display: flex;
+    height: 20px;
+    margin-bottom: 15px;
+}

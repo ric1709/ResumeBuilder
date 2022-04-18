@@ -1,0 +1,84 @@
+.main-funnel {
+	width: 605px;
+	height: 430px;
+	padding: 40px;
+	position: relative;
+	top: 50px;
+	left: 150px;
+}
+.h1 {
+	width: 430px;
+	height: 52px;
+	font-size: 30px;
+	margin: 0 0 10px;
+	display: flex;
+	align-items: center;
+}
+.p {
+	width: 100%;
+	height: 22px;
+	margin: 0 0 10px;
+}
+.education-input-div {
+	width: 430px;
+	height: 65px;
+	font-size: 14px;
+}
+.select {
+	width: 435px;
+	height: 70px;
+}
+.education-input-div label {
+	font-weight: 600;
+}
+.education-input {
+	width: 100%;
+	height: 30px;
+	border: 0.5px solid grey;
+	margin-top: 3px;
+}
+.education-select {
+	width: 100%;
+	height: 35px;
+	border: 0.5px solid grey;
+	margin-top: 3px;
+}
+.btn {
+	width: 430px;
+	height: 40px;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 30px;
+}
+.start-date {
+	width: 430px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 10px;
+}
+.start-date .label {
+	margin-top: 3px;
+	font-size: 14px;
+	width: 200px;
+}
+.start-date .date {
+	width: 200px;
+	height: 40px;
+}
+.show-country {
+	width: 130px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 5px;
+}
+.show-country label {
+	font-size: 14px;
+}
+.show-country input {
+	width: 20px;
+	height: 20px;
+	border: 0.5 solid grey;
+	margin-left: 0;
+}

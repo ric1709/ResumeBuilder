@@ -1,0 +1,77 @@
+import React from 'react'
+import './ResumePreview.css'
+// import './ResumePreviewMini.css'
+
+function ResumePreview() {
+	
+	return (
+		<div className='wrapper-preview-mini'>
+			<div className='contact-info'>
+				<h1>Baiaaly Abaskanov</h1>
+				<hr />
+				<div>
+					<p>Bukonai 25 ,Bishkek,Kyrgyzstan</p>
+					<p>0504 15 44 44</p>
+					<p>abbaskanov@gmail.com</p>
+				</div>
+			</div>
+			<div className='summary'>
+				<h2>Professional Summary</h2>
+				<hr />
+				<div className='summary-item'>
+                <li >
+					Forward-thinking Head of Marketing experienced in developing
+					and executing marketing strategies and programs to achieve
+					continued brand growth and profitability. Focused on
+					defining brand vision and positioning, increasing brand
+					relevance and driving traffic to various sales channels.
+					Integrate consumer insights into strategic planning
+					initiatives. Subject Matter Expert on consumer, competition
+					and different sales and marketing channels across global
+					landscape.
+				</li>
+                </div>
+			</div>
+			<div className='skills'>
+				<h2>Skills</h2>
+				<hr />
+				<div className='skill-list'>
+					<li>Product launch management</li>
+					<li>Product launch management</li>
+					<li>Product launch management</li>
+					<li>Product launch management</li>
+                    <li>Product launch management</li>
+					<li>Product launch management</li>
+					<li>Product launch management</li>
+					<li>Product launch management</li>
+				</div>
+			</div>
+			<div className='experience'>
+				<h2>Experience</h2>
+				<hr />
+				<div className='position-date'>
+					<p>Position</p>
+					<p>Date</p>
+				</div>
+				<div className='experience-address'>
+					<p>Peaksoft :</p>
+					<p> : Address</p>
+				</div>
+			</div>
+			<div className='education'>
+				<h2>Education</h2>
+				<hr />
+				<div className='education-item'>
+					<p>Field of study : asd</p>
+					<p>Date</p>
+				</div>
+				<div className='education-address'>
+					<p>Jaktel :</p>
+					<p>: Address</p>
+				</div>
+			</div>
+		</div>
+	)
+}
+
+export default ResumePreview
