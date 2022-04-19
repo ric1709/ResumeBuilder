@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './ResumePreview.css'
-// import './ResumePreviewMini.css'
+import { useSelector } from 'react-redux'
 
 function ResumePreview() {
-	
+	const { resume } = useSelector((state) => state)
+	const {contact}=resume
+
+	useEffect(() => {
+		localStorage.setItem('@resume-data', JSON.stringify(resume))
+	}, [resume])
 	return (
 		<div className='wrapper-preview-mini'>
-			<div className='contact-info'>
-				<h1>Baiaaly Abaskanov</h1>
+			<div className='contact-info'>~
+				<h1>{contact.name}</h1>
 				<hr />
 				<div>
 					<p>Bukonai 25 ,Bishkek,Kyrgyzstan</p>
@@ -19,18 +24,18 @@ function ResumePreview() {
 				<h2>Professional Summary</h2>
 				<hr />
 				<div className='summary-item'>
-                <li >
-					Forward-thinking Head of Marketing experienced in developing
-					and executing marketing strategies and programs to achieve
-					continued brand growth and profitability. Focused on
-					defining brand vision and positioning, increasing brand
-					relevance and driving traffic to various sales channels.
-					Integrate consumer insights into strategic planning
-					initiatives. Subject Matter Expert on consumer, competition
-					and different sales and marketing channels across global
-					landscape.
-				</li>
-                </div>
+					<li>
+						Forward-thinking Head of Marketing experienced in
+						developing and executing marketing strategies and
+						programs to achieve continued brand growth and
+						profitability. Focused on defining brand vision and
+						positioning, increasing brand relevance and driving
+						traffic to various sales channels. Integrate consumer
+						insights into strategic planning initiatives. Subject
+						Matter Expert on consumer, competition and different
+						sales and marketing channels across global landscape.
+					</li>
+				</div>
 			</div>
 			<div className='skills'>
 				<h2>Skills</h2>
@@ -40,7 +45,7 @@ function ResumePreview() {
 					<li>Product launch management</li>
 					<li>Product launch management</li>
 					<li>Product launch management</li>
-                    <li>Product launch management</li>
+					<li>Product launch management</li>
 					<li>Product launch management</li>
 					<li>Product launch management</li>
 					<li>Product launch management</li>

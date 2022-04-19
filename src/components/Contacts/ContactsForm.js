@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import useInput from '../../hooks/useInput'
 import Button from '../../UI/Button/Button'
 import './ContactsForm.css'
 
 function ContactsForm() {
+	const selector=useSelector(state=>state.resume)
+	const dispatch=useDispatch()
+	const navigate=useNavigate()
 	const user = useInput({
 		name: '',
 		city: '',
