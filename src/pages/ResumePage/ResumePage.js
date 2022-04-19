@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import ResumePreview from '../components/Resume/ResumePreview'
+import ResumePreview from '../../components/Resume/ResumePreview'
 import './ResumePage.css'
 
 function ResumePage() {
