@@ -1,32 +1,40 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import useChangePage from '../../hooks/useChangePage'
+import useDebounce from '../../hooks/useDebounce'
 import useInput from '../../hooks/useInput'
 import { resumeActions } from '../../store/user-info-slice'
 import Button from '../../UI/Button/Button'
 import './EducationForm.css'
 
 function EducationForm() {
-	const navigate=useNavigate()
 	const dispatch=useDispatch()
-	const edu = useInput({
-		school: '',
-		city: '',
-		country: '',
-		degree: '',
-		fieldOfStudy: '',
-		date: '',
-		id:Math.random().toString()
-	})
+	const changePage=useChangePage()
+	const debouncedCallback=useDebounce(sendEducationDataToStore,800)
+	const {education}=useSelector(state=>state.resume)
+	
 	const [showCountry, setShowCountry] = useState(false)
 
+	const {school,city,country,degree,fieldOfStudy,date}=education
+	const edu = useInput({
+		school:school|| '',
+		city:city|| '',
+		country:country|| '',
+		degree: degree||'',
+		fieldOfStudy:fieldOfStudy|| '',
+		date: date||'',
+		id:Math.random().toString()
+	})
+	
 	const showCountryHandler = () => {
 		setShowCountry((prevState) => !prevState)
 	}
-	const educationInfoHandler = () => {
-		dispatch(resumeActions.educationInfo(edu.value))
-		navigate('/experience')
+	function sendEducationDataToStore(){
+		return dispatch(resumeActions.educationInfo(edu.value))
 	}
+	useEffect(()=>{
+		debouncedCallback()
+	},[debouncedCallback])
 	return (
 		<div className='main-funnel'>
 			<h1 className='h1'>Education</h1>
@@ -125,7 +133,7 @@ function EducationForm() {
 			</div>
 			<div className='btn'>
 				<Button className='back'>BACK</Button>
-				<Button className='next' onClick={educationInfoHandler}>
+				<Button className='next' onClick={changePage('/experience')}>
 					CONTINUE
 				</Button>
 			</div>

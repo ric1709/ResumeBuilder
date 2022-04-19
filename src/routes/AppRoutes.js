@@ -1,18 +1,17 @@
 import React, { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Layout from '../components/Layout/Layout'
-import ResumePreview from '../components/Resume/ResumePreview'
+
 
 function AppRoutes() {
-	const ContactPage = React.lazy(() => import('../pages/ContactPage'))
-	const ExperiencePage = React.lazy(() => import('../pages/ExperiencePage'))
-	const EducationPage = React.lazy(() => import('../pages/EducationPage'))
-	const SkillsPage = React.lazy(() => import('../pages/SkillsPage'))
-	const SummaryPage = React.lazy(() => import('../pages/SummaryPage'))
-	const ResumePage = React.lazy(() => import('../pages/ResumePage'))
+	const ContactPage = React.lazy(() => import('../pages/ContactsPage/ContactPage'))
+	const ExperiencePage = React.lazy(() => import('../pages/ExperiencePage/ExperiencePage'))
+	const EducationPage = React.lazy(() => import('../pages/EducationPage/EducationPage'))
+	const SkillsPage = React.lazy(() => import('../pages/SkillsPage/SkillsPage'))
+	const SummaryPage = React.lazy(() => import('../pages/SummaryPage/SummaryPage'))
+	const ResumePage = React.lazy(() => import('../pages/ResumePage/ResumePage'))
 	return (
 		<Suspense fallback={<p>Loading...</p>}>
-            <ResumePreview/>
 			<Routes>
 				<Route path='/' element={<Navigate to ={'/contact'}/>} />
 				<Route path='/' element={<Layout />}>

@@ -1,22 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import useChangePage from '../../hooks/useChangePage'
+import useDebounce from '../../hooks/useDebounce'
 import useInput from '../../hooks/useInput'
 import { resumeActions } from '../../store/user-info-slice'
 import Button from '../../UI/Button/Button'
 import './ContactsForm.css'
 
 function ContactsForm() {
-	const selector=useSelector(state=>state.resume)
-	const dispatch=useDispatch()
-	const navigate=useNavigate()
+	const { name, city, address, country, email, phone } = useSelector(
+		(state) => state.resume.contact,
+	)
+	const dispatch = useDispatch()
+	const debouncedCallback = useDebounce(sendContantDataToStore, 800)
+	const changePage = useChangePage()
 	const user = useInput({
-		name: '',
-		city: '',
-		address: '',
-		country: '',
-		email: '',
-		phone: '',
+		name: name || '',
+		city: city || '',
+		address: address || '',
+		country: country || '',
+		email: email || '',
+		phone: phone || '',
 	})
 	const [showCountry, setShowCountry] = useState(false)
 
@@ -24,10 +28,14 @@ function ContactsForm() {
 		setShowCountry((prevState) => !prevState)
 	}
 
-	const sendContactsHandler=()=>{
-		dispatch(resumeActions.contacts(user.value))
-		navigate('/education')
+	const { value } = user
+	function sendContantDataToStore() {
+		return dispatch(resumeActions.contacts(value))
 	}
+
+	useEffect(() => {
+		debouncedCallback()
+	}, [debouncedCallback])
 
 	return (
 		<div className='main-funnel'>
@@ -41,8 +49,8 @@ function ContactsForm() {
 					type='text'
 					className='contact-input'
 					maxLength='20'
-					name='name'
 					value={user.value.name}
+					name='name'
 					onChange={user.onChange}
 				/>
 			</div>
@@ -106,7 +114,9 @@ function ContactsForm() {
 			</div>
 			<div className='btn'>
 				<Button className='back'>BACK</Button>
-				<Button className='next' onClick={sendContactsHandler}>CONTINUE</Button>
+				<Button className='next' onClick={changePage('/education')}>
+					CONTINUE
+				</Button>
 			</div>
 		</div>
 	)

@@ -1,40 +1,31 @@
-import React, { useState } from 'react'
+import React, { useEffect} from 'react'
 import { useDispatch } from 'react-redux'
-import { Navigate, useNavigate } from 'react-router-dom'
+import useChangePage from '../../hooks/useChangePage'
+import useDebounce from '../../hooks/useDebounce'
 import useInput from '../../hooks/useInput'
 import { resumeActions } from '../../store/user-info-slice'
 import Button from '../../UI/Button/Button'
+import { SKILLS } from '../../utils/constants/general'
 import './SkillsForm.css'
 
 function SkillsForm() {
-	const navigate=useNavigate()
 	const dispatch=useDispatch()
+	const debouncedCallback=useDebounce(saveDataToStore,800)
+	const changePage=useChangePage()
 	const skillInfo = useInput({
 		skill: '',
 		id:Math.random().toString(),
 	})
-
-	const sendSkillsHandler=()=>{
-		dispatch(resumeActions.skills(skillInfo.value))
-		navigate('/summary')
+	function saveDataToStore(){
+		return dispatch(resumeActions.skills(skillInfo.value))
 	}
-
+	useEffect(()=>{
+		debouncedCallback()
+	},[debouncedCallback])
 	return (
 		<div className='skills-main-funnel'>
 			<h1 className='skills-h1'>Skills</h1>
 			<p className='skills-p'>Highlight 6-8 of your top skills.</p>
-				<div className='skills-input-div'>
-					<label>Add your skills</label>
-					<input
-						type='text'
-						className='skills-input'
-						placeholder='Eg:Team Building'
-						name='skill'
-						value={skillInfo.value.skill}
-						onChange={skillInfo.onChange}
-					/>
-					<Button className='add'>ADD</Button>
-				</div>
 			<div className='skills-input-div select'>
 				<label>Your skills</label>
 				<select
@@ -46,29 +37,26 @@ function SkillsForm() {
 					<option value='' key='1'>
 						Select Your Skills
 					</option>
-					<option value='Data Management' key='2'>
-						Data Management
-					</option>
-					<option value='Project Management' key='3'>
-						Project Management
-					</option>
-					<option value='Critical Thinking' key='4'>
-						Critical Thinking
-					</option>
-					<option value='Responsibility' key='5'>
-						Responsibility
-					</option>
-					<option value='Team Player' key='6'>
-						Team Player
-					</option>
-					<option value='Leader' key='7'>
-						Leader
-					</option>
+					{SKILLS.map(el=>(
+						<option value={el} key={el}>{el}</option>
+					))}
 				</select>
 			</div>
+			<div className='skills-input-div'>
+					<label>Add your skills</label>
+					<input
+						type='text'
+						className='skills-input'
+						placeholder='Eg:Team Building'
+						name='skill'
+						value={skillInfo.value.skill}
+						onChange={skillInfo.onChange}
+					/>
+					<Button className='add'>ADD</Button>
+				</div>
 			<div className='btn'>
 				<Button className='back'>BACK</Button>
-				<Button className='next' onClick={sendSkillsHandler}>CONTINUE</Button>
+				<Button className='next' onClick={changePage('/summary')}>CONTINUE</Button>
 			</div>
 		</div>
 	)
