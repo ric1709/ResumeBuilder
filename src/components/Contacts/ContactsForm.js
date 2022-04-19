@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import useInput from '../../hooks/useInput'
+import { resumeActions } from '../../store/user-info-slice'
 import Button from '../../UI/Button/Button'
 import './ContactsForm.css'
 
@@ -23,9 +24,9 @@ function ContactsForm() {
 		setShowCountry((prevState) => !prevState)
 	}
 
-	const handler=(e)=>{
-		e.preventDefault()
-		console.log(user.value);
+	const sendContactsHandler=()=>{
+		dispatch(resumeActions.contacts(user.value))
+		navigate('/education')
 	}
 
 	return (
@@ -34,7 +35,6 @@ function ContactsForm() {
 			<p className='question'>
 				How do you want employers to contact you?
 			</p>
-
 			<div className='contact-input-div'>
 				<label>Name</label>
 				<input
@@ -106,7 +106,7 @@ function ContactsForm() {
 			</div>
 			<div className='btn'>
 				<Button className='back'>BACK</Button>
-				<Button className='next' onClick={handler}>CONTINUE</Button>
+				<Button className='next' onClick={sendContactsHandler}>CONTINUE</Button>
 			</div>
 		</div>
 	)

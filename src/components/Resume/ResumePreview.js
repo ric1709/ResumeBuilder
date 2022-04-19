@@ -12,12 +12,12 @@ function ResumePreview() {
 	return (
 		<div className='wrapper-preview-mini'>
 			<div className='contact-info'>~
-				<h1>{contact.name}</h1>
+				<h1>{contact.name  || 'Contact Information'}</h1>
 				<hr />
 				<div>
-					<p>Bukonai 25 ,Bishkek,Kyrgyzstan</p>
-					<p>0504 15 44 44</p>
-					<p>abbaskanov@gmail.com</p>
+					<p>{contact.address}</p>
+					<p>{contact.phone}</p>
+					<p>{contact.email}</p>
 				</div>
 			</div>
 			<div className='summary'>

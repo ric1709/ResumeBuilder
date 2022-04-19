@@ -1,15 +1,22 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { Navigate, useNavigate } from 'react-router-dom'
 import useInput from '../../hooks/useInput'
+import { resumeActions } from '../../store/user-info-slice'
 import Button from '../../UI/Button/Button'
 import './SkillsForm.css'
 
 function SkillsForm() {
+	const navigate=useNavigate()
+	const dispatch=useDispatch()
 	const skillInfo = useInput({
 		skill: '',
+		id:Math.random().toString(),
 	})
 
-	const handler=()=>{
-		console.log(skillInfo.value);
+	const sendSkillsHandler=()=>{
+		dispatch(resumeActions.skills(skillInfo.value))
+		navigate('/summary')
 	}
 
 	return (
@@ -61,7 +68,7 @@ function SkillsForm() {
 			</div>
 			<div className='btn'>
 				<Button className='back'>BACK</Button>
-				<Button className='next' onClick={handler}>CONTINUE</Button>
+				<Button className='next' onClick={sendSkillsHandler}>CONTINUE</Button>
 			</div>
 		</div>
 	)
