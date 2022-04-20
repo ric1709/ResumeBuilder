@@ -1,0 +1,9 @@
+.wrapper-add {
+	display: flex;
+	justify-content: space-between;
+}
+
+.add-img-experience {
+	width: 566px;
+	height: 100%;
+}

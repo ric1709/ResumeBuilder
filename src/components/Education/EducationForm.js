@@ -8,33 +8,33 @@ import Button from '../../UI/Button/Button'
 import './EducationForm.css'
 
 function EducationForm() {
-	const dispatch=useDispatch()
-	const changePage=useChangePage()
-	const debouncedCallback=useDebounce(sendEducationDataToStore,800)
-	const {education}=useSelector(state=>state.resume)
-	
+	const dispatch = useDispatch()
+	const changePage = useChangePage()
+	const debouncedCallback = useDebounce(sendEducationDataToStore, 800)
+	const { education } = useSelector((state) => state.resume)
 	const [showCountry, setShowCountry] = useState(false)
 
-	const {school,city,country,degree,fieldOfStudy,date}=education
+	const { school, city, country, degree, fieldOfStudy, date} = education
+	console.log(education);
 	const edu = useInput({
-		school:school|| '',
-		city:city|| '',
-		country:country|| '',
-		degree: degree||'',
-		fieldOfStudy:fieldOfStudy|| '',
-		date: date||'',
-		id:Math.random().toString()
+		school: school || '',
+		city: city || '',
+		country: country || '',
+		degree: degree || '',
+		fieldOfStudy: fieldOfStudy || '',
+		date: date || '',
+		id: Math.random().toString(),
 	})
-	
+
 	const showCountryHandler = () => {
 		setShowCountry((prevState) => !prevState)
 	}
-	function sendEducationDataToStore(){
+	function sendEducationDataToStore() {
 		return dispatch(resumeActions.educationInfo(edu.value))
 	}
-	useEffect(()=>{
+	useEffect(() => {
 		debouncedCallback()
-	},[debouncedCallback])
+	}, [debouncedCallback])
 	return (
 		<div className='main-funnel'>
 			<h1 className='h1'>Education</h1>
@@ -131,8 +131,13 @@ function EducationForm() {
 					/>
 				</div>
 			</div>
+			<div className='additional-btn-div'>
+				<button className='add-btn' onClick={changePage('/addEdu')}>
+					+ADD ANOTHER EDUCATION
+				</button>
+			</div>
 			<div className='btn'>
-				<Button className='back'>BACK</Button>
+				<Button className='back' >BACK</Button>
 				<Button className='next' onClick={changePage('/experience')}>
 					CONTINUE
 				</Button>
