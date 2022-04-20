@@ -1,5 +1,5 @@
 .wrapper-preview {
-	width: 700px;
+	width: 600px;
 	height: 100%;
 	background-color: whitesmoke;
 	color: black;
@@ -11,7 +11,8 @@
 }
 .wrapper-preview-mini{
 	width: 320px;
-	height: 530px;
+	min-height: 530px;
+    max-height: 100%;
 	background-color: whitesmoke;
 	color: black;
 	display: flex;

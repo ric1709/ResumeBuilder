@@ -10,7 +10,7 @@ import './SkillsForm.css'
 
 function SkillsForm() {
 	const dispatch=useDispatch()
-	const debouncedCallback=useDebounce(saveDataToStore,800)
+	const debouncedCallback=useDebounce(saveDataToStore,1500)
 	const changePage=useChangePage()
 	const skillInfo = useInput({
 		skill: '',
@@ -52,7 +52,6 @@ function SkillsForm() {
 						value={skillInfo.value.skill}
 						onChange={skillInfo.onChange}
 					/>
-					<Button className='add'>ADD</Button>
 				</div>
 			<div className='btn'>
 				<Button className='back'>BACK</Button>

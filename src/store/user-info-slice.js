@@ -3,7 +3,9 @@ import { createSlice } from '@reduxjs/toolkit'
 const initState = {
 	contact: {},
 	education: {},
+	extraEducation: [],
 	experience: {},
+	extraExperience: [],
 	skills: [],
 	summary: {},
 }
@@ -21,16 +23,64 @@ const resumeFillingSlice = createSlice({
 		educationInfo(state, action) {
 			state.education = action.payload
 		},
+		extraEducation(state, action) {
+			const index = state.extraEducation.findIndex(
+				(el) => el.id === action.payload.id,
+			)
+			if (index) {
+				state.extraEducation.push(action.payload)
+			} else {
+				state.extraEducation.map((el) => {
+					if (el.id !== action.payload.id) {
+						if (
+							action.payload.school &&
+							action.payload.city &&
+							action.payload.date &&
+							action.payload.degree &&
+							action.payload.fieldOfStudy
+						) {
+							state.extraEducation.push(action.payload)
+						} else {
+							return state.extraEducation
+						}
+					}
+				})
+			}
+		},
 		experienceInfo(state, action) {
 			state.experience = action.payload
 		},
+		extraExperience(state, action) {
+			const index = state.extraExperience.findIndex(
+				(el) => el.id === action.payload.id,
+			)
+			if (index) {
+				state.extraExperience.push(action.payload)
+			} else {
+				state.extraExperience.map((el) => {
+					if (el.id !== action.payload.id) {
+						if (
+							action.payload.title &&
+							action.payload.city &&
+							action.payload.employer &&
+							action.payload.startDate &&
+							action.payload.endDate
+						) {
+							state.extraExperience.push(action.payload)
+						} else {
+							return state.extraExperience
+						}
+					}
+				})
+			}
+		},
 		skills(state, action) {
-			if(action.payload.skill){
+			if (action.payload.skill) {
 				state.skills.push(action.payload)
 			}
 		},
 		summary(state, action) {
-			state.summary=action.payload
+			state.summary = action.payload
 		},
 	},
 })

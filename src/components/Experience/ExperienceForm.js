@@ -107,6 +107,11 @@ function ExperienceForm() {
 					/>
 				</div>
 			</div>
+			<div className='additional-btn-div'>
+				<button className='add-btn' onClick={changePage('/add-experience')}>
+					+ADD ANOTHER EXPERIENCE
+				</button>
+			</div>
 			<div className='btn'>
 				<Button className='back'>BACK</Button>
 				<Button className='next' onClick={changePage('/skills')}>
