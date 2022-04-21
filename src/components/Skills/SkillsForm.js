@@ -19,9 +19,10 @@ function SkillsForm() {
 	function saveDataToStore(){
 		return dispatch(resumeActions.skills(skillInfo.value))
 	}
-	useEffect(()=>{
+	const saveSkillsToStoreHandler=()=>{
 		debouncedCallback()
-	},[debouncedCallback])
+	}
+	
 	return (
 		<div className='skills-main-funnel'>
 			<h1 className='skills-h1'>Skills</h1>
@@ -53,6 +54,11 @@ function SkillsForm() {
 						onChange={skillInfo.onChange}
 					/>
 				</div>
+				<div className='additional-btn-div'>
+				<button className='add-btn' onClick={saveSkillsToStoreHandler}>
+					+ADD SKILLS
+				</button>
+			</div>
 			<div className='btn'>
 				<Button className='back'>BACK</Button>
 				<Button className='next' onClick={changePage('/summary')}>CONTINUE</Button>
