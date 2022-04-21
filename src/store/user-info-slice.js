@@ -8,6 +8,7 @@ const initState = {
 	extraExperience: [],
 	skills: [],
 	summary: {},
+	id:''
 }
 const resumeData = localStorage.getItem('@resume-data')
 	? JSON.parse(localStorage.getItem('@resume-data'))
@@ -55,6 +56,9 @@ const resumeFillingSlice = createSlice({
 				})
 			}
 		},
+		editEducaion(state,action){
+			state.extraEducation=state.extraEducation.map(el=>el.id === action.payload.id ? action.payload : el)
+		},
 		experienceInfo(state, action) {
 			state.experience = action.payload
 		},
@@ -100,7 +104,9 @@ const resumeFillingSlice = createSlice({
 		},
 		removeExtraEducaion(state,action){
 			state.extraEducation=state.extraEducation.filter(edu=>edu.id !== action.payload)
-			
+		},
+		edit(state,action){
+			state.id=action.payload
 		}
 	},
 })

@@ -1,0 +1,9 @@
+.add-edu-wrapper {
+	display: flex;
+	justify-content: space-between;
+}
+
+.add-img-education {
+	width: 505px;
+	height: 100%;
+}
