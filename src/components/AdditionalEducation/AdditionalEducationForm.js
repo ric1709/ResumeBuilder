@@ -1,45 +1,42 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import useChangePage from '../../hooks/useChangePage';
-import useDebounce from '../../hooks/useDebounce';
-import useInput from '../../hooks/useInput';
-import { resumeActions } from '../../store/user-info-slice';
-import Button from '../../UI/Button/Button';
+import React, { useState } from 'react'
+import { useDispatch} from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import useChangePage from '../../hooks/useChangePage'
+import useDebounce from '../../hooks/useDebounce'
+import useInput from '../../hooks/useInput'
+import { resumeActions } from '../../store/user-info-slice'
+import Button from '../../UI/Button/Button'
+import { DEGREES } from '../../utils/constants/general'
 import './AdditionalEducationForm.css'
 
 function AdditionalEducationForm() {
-	const dispatch=useDispatch()
-	const navigate=useNavigate()
-	const debouncedCallback=useDebounce(onSaveDataToStore,800)
-    const changePage=useChangePage()
-	const {extraEducation}=useSelector(state=>state.resume)
-
-    const [showCountry,setShowCountry]=useState(false)
-	
-	const edu=useInput({
+	const dispatch = useDispatch()
+	const navigate = useNavigate()
+	const debouncedCallback = useDebounce(onSaveDataToStore, 800)
+	const changePage = useChangePage()
+	const [showCountry, setShowCountry] = useState(false)
+	const edu = useInput({
 		school:'',
 		city:'',
 		country:'',
-		degree: '',
-		fieldOfStudy: '',
+		degree:'',
+		fieldOfStudy:'',
 		date:'',
 		id: Math.random().toString(),
 	})
 
-	function onSaveDataToStore(){
+	function onSaveDataToStore() {
 		return dispatch(resumeActions.extraEducation(edu.value))
 	}
-	const onSaveDataToStoreHandler=()=>{
+	const onSaveDataToStoreHandler = () => {
 		debouncedCallback()
 		navigate('/education')
 	}
-    const showCountryHandler = () => {
+	const showCountryHandler = () => {
 		setShowCountry((prevState) => !prevState)
 	}
-
-    return (
-        <div className='main-funnel'>
+	return (
+		<div className='main-funnel'>
 			<h1 className='h1'>Education</h1>
 			<p className='p'>Where did you go to school?</p>
 			<div className='add-education-input-div'>
@@ -95,21 +92,11 @@ function AdditionalEducationForm() {
 					<option value='High School Diploma' key='2'>
 						High School Diploma
 					</option>
-					<option value='BBA' key='3'>
-						BBA
-					</option>
-					<option value='MBA' key='4'>
-						MBA
-					</option>
-					<option value='J.D' key='5'>
-						J.D
-					</option>
-					<option value='Ph.D' key='6'>
-						Ph.D
-					</option>
-					<option value='Bachelor of Science' key='7'>
-						Bachelor of Science
-					</option>
+					{DEGREES.map((degree) => (
+						<option value={degree} key={Math.random()}>
+							{degree}
+						</option>
+					))}
 				</select>
 			</div>
 			<div className='add-education-input-div'>
@@ -135,13 +122,15 @@ function AdditionalEducationForm() {
 				</div>
 			</div>
 			<div className='btn'>
-				<Button className='back' onClick={changePage('/education')}>CENCEL</Button>
+				<Button className='back' onClick={changePage('/education')}>
+					CENCEL
+				</Button>
 				<Button className='next' onClick={onSaveDataToStoreHandler}>
 					SAVE
 				</Button>
 			</div>
 		</div>
-    );
+	)
 }
 
-export default AdditionalEducationForm;
+export default AdditionalEducationForm
