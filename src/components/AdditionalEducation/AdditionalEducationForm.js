@@ -6,6 +6,7 @@ import useDebounce from '../../hooks/useDebounce';
 import useInput from '../../hooks/useInput';
 import { resumeActions } from '../../store/user-info-slice';
 import Button from '../../UI/Button/Button';
+import { DEGREES } from '../../utils/constants/general';
 import './AdditionalEducationForm.css'
 
 function AdditionalEducationForm() {
@@ -95,21 +96,9 @@ function AdditionalEducationForm() {
 					<option value='High School Diploma' key='2'>
 						High School Diploma
 					</option>
-					<option value='BBA' key='3'>
-						BBA
-					</option>
-					<option value='MBA' key='4'>
-						MBA
-					</option>
-					<option value='J.D' key='5'>
-						J.D
-					</option>
-					<option value='Ph.D' key='6'>
-						Ph.D
-					</option>
-					<option value='Bachelor of Science' key='7'>
-						Bachelor of Science
-					</option>
+					{DEGREES.map(degree=>(
+						<option value={degree} key={degree}>{degree}</option>
+					))}
 				</select>
 			</div>
 			<div className='add-education-input-div'>
