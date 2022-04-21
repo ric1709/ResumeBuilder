@@ -28,7 +28,15 @@ const resumeFillingSlice = createSlice({
 				(el) => el.id === action.payload.id,
 			)
 			if (index) {
-				state.extraEducation.push(action.payload)
+				if (
+					action.payload.school &&
+					action.payload.city &&
+					action.payload.date &&
+					action.payload.degree &&
+					action.payload.fieldOfStudy
+				) {
+					state.extraEducation.push(action.payload)
+				}
 			} else {
 				state.extraEducation.map((el) => {
 					if (el.id !== action.payload.id) {
@@ -55,7 +63,15 @@ const resumeFillingSlice = createSlice({
 				(el) => el.id === action.payload.id,
 			)
 			if (index) {
-				state.extraExperience.push(action.payload)
+				if (
+					action.payload.title &&
+					action.payload.city &&
+					action.payload.employer &&
+					action.payload.startDate &&
+					action.payload.endDate
+				) {
+					state.extraExperience.push(action.payload)
+				} 
 			} else {
 				state.extraExperience.map((el) => {
 					if (el.id !== action.payload.id) {
@@ -82,6 +98,10 @@ const resumeFillingSlice = createSlice({
 		summary(state, action) {
 			state.summary = action.payload
 		},
+		removeExtraEducaion(state,action){
+			state.extraEducation=state.extraEducation.filter(edu=>edu.id !== action.payload)
+			
+		}
 	},
 })
 

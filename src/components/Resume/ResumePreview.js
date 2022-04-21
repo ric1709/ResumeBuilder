@@ -19,7 +19,7 @@ function ResumePreview() {
 
 	useEffect(() => {
 		window.onbeforeunload = () => {
-			return localStorage.setItem('@resume-data', JSON.stringify(resume))
+			// return localStorage.setItem('@resume-data', JSON.stringify(resume))
 		}
 	}, [resume])
 	return (

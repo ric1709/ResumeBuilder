@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import ReactDOM from 'react-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import useChangePage from '../../hooks/useChangePage'
 import useDebounce from '../../hooks/useDebounce'
@@ -6,17 +7,15 @@ import useInput from '../../hooks/useInput'
 import { resumeActions } from '../../store/user-info-slice'
 import Button from '../../UI/Button/Button'
 import { DEGREES } from '../../utils/constants/general'
+import EditEducation from '../Edit/EditEducation/EditEducation'
 import './EducationForm.css'
 
-function EducationForm() {
+function EducationForm({editModal}) {
 	const dispatch = useDispatch()
 	const changePage = useChangePage()
 	const debouncedCallback = useDebounce(sendEducationDataToStore, 800)
-	const { education } = useSelector((state) => state.resume)
-	const [showCountry, setShowCountry] = useState(false)
-
-	const { school, city, country, degree, fieldOfStudy, date} = education
-	console.log(education);
+	const { education, extraEducation } = useSelector((state) => state.resume)
+	const { school, city, country, degree, fieldOfStudy, date } = education
 	const edu = useInput({
 		school: school || '',
 		city: city || '',
@@ -27,19 +26,44 @@ function EducationForm() {
 		id: Math.random().toString(),
 	})
 
+	const [showCountry, setShowCountry] = useState(false)
+	const [showEdit, setShowEdit] = useState(false)
+	const [showEditModal,setShowEditModal]=useState(false)
+
 	const showCountryHandler = () => {
 		setShowCountry((prevState) => !prevState)
 	}
 	function sendEducationDataToStore() {
 		return dispatch(resumeActions.educationInfo(edu.value))
 	}
+	const callEditModal=()=>{
+		editModal(showEditModal)
+		setShowEditModal(prevState=>!prevState)
+	}
 	useEffect(() => {
 		debouncedCallback()
 	}, [debouncedCallback])
+	useEffect(() => {
+		if (extraEducation.length) {
+			setShowEdit(true)
+		} else {
+			setShowEdit(false)
+		}
+	}, [extraEducation])
+
 	return (
 		<div className='main-funnel'>
 			<h1 className='h1'>Education</h1>
-			<p className='p'>Where did you go to school?</p>
+			<div className='intro-div'>
+				<p className='p'>Where did you go to school?</p>
+				{showEdit && (
+					<button className='edit-button' onClick={callEditModal}>
+						<b>EDIT</b>
+					</button>
+				)}
+			</div>
+			{showEditModal && ReactDOM.createPortal(<div className="backdrop"></div>,document.getElementById('backdrop'))}
+			{showEditModal && ReactDOM.createPortal(<EditEducation onCloseModal={callEditModal}/>,document.getElementById('modal'))}
 			<div className='education-input-div'>
 				<label>School Name</label>
 				<input
@@ -90,9 +114,13 @@ function EducationForm() {
 					<option value='' key='1'>
 						Select Your Degree
 					</option>
-					<option value="High School Diploma" key="1">High School Diploma</option>
-					{DEGREES.map(degree=>(
-						<option value={degree} key={degree}>{degree}</option>
+					<option value='High School Diploma' key='2'>
+						High School Diploma
+					</option>
+					{DEGREES.map((degree) => (
+						<option value={degree} key={Math.random()}>
+							{degree}
+						</option>
 					))}
 				</select>
 			</div>
@@ -124,7 +152,7 @@ function EducationForm() {
 				</button>
 			</div>
 			<div className='btn'>
-				<Button className='back' >BACK</Button>
+				<Button className='back'>BACK</Button>
 				<Button className='next' onClick={changePage('/experience')}>
 					CONTINUE
 				</Button>

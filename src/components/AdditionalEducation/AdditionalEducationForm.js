@@ -97,7 +97,7 @@ function AdditionalEducationForm() {
 						High School Diploma
 					</option>
 					{DEGREES.map(degree=>(
-						<option value={degree} key={degree}>{degree}</option>
+						<option value={degree} key={Math.random()}>{degree}</option>
 					))}
 				</select>
 			</div>
