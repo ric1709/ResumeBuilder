@@ -4,7 +4,6 @@ import useChangePage from '../../../hooks/useChangePage'
 import useDebounce from '../../../hooks/useDebounce'
 import { resumeActions } from '../../../store/user-info-slice'
 import Button from '../../../UI/Button/Button'
-import { SKILLS } from '../../../utils/constants/general'
 import './EditSkillsForm.css'
 
 function EditSkillsForm() {
@@ -29,31 +28,6 @@ function EditSkillsForm() {
 			<h1 className='skills-h1'>Skills</h1>
 			<div className='skills-edit-div'>
 				<p className='skills-p'>Highlight 6-8 of your top skills.</p>
-			</div>
-			<div className='skills-input-div select'>
-				<label>Your skills</label>
-				<select
-					className='skills-select'
-					name='skill'
-					value={skill.skill}
-					onChange={(e) =>
-						setSkill((prev) => {
-							return {
-								...prev,
-								skill: e.target.value,
-							}
-						})
-					}
-				>
-					<option value='' key='1'>
-						Select Your Skills
-					</option>
-					{SKILLS.map((el) => (
-						<option value={el.title} key={el.id}>
-							{el.title}
-						</option>
-					))}
-				</select>
 			</div>
 			<div className='skills-input-div'>
 				<label>Add your skills</label>
