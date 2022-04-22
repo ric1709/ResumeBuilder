@@ -6,6 +6,7 @@ import useInput from '../../hooks/useInput'
 import { resumeActions } from '../../store/user-info-slice'
 import Button from '../../UI/Button/Button'
 import './ContactsForm.css'
+import InputMask from 'react-input-mask'
 
 function ContactsForm() {
 	const { name, city, address, country, email, phone } = useSelector(
@@ -104,10 +105,11 @@ function ContactsForm() {
 			</div>
 			<div className='contact-input-div'>
 				<label>Phone</label>
-				<input
+				<InputMask
 					type='text'
 					className='contact-input'
 					name='phone'
+					mask={'+\\9\\9\\6\\ (999) 99 99 99'}
 					value={user.value.phone}
 					onChange={user.onChange}
 				/>
