@@ -1,0 +1,9 @@
+.wrapper {
+	display: flex;
+	justify-content: space-between;
+}
+
+.img-experience {
+	width: 502px;
+	height: 100%;
+}

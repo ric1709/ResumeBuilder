@@ -6,7 +6,15 @@ import { useLocation } from 'react-router-dom'
 function ResumePreview() {
 	const path = useLocation()
 	const { resume } = useSelector((state) => state)
-	const { contact, education, experience, summary, skills, extraEducation ,extraExperience} = resume
+	const {
+		contact,
+		education,
+		experience,
+		summary,
+		skills,
+		extraEducation,
+		extraExperience,
+	} = resume
 	const [changePreviewPage, setChangePreviewPage] = useState(false)
 
 	useEffect(() => {
@@ -44,7 +52,7 @@ function ResumePreview() {
 				<h2>Professional Summary</h2>
 				<hr />
 				<div className='summary-item'>
-					<li>{summary.summary}</li>
+					<p>{summary.summary}</p>
 				</div>
 			</div>
 			<div className='skills'>
@@ -77,26 +85,27 @@ function ResumePreview() {
 						: {experience.city || 'city'} , {experience.country}
 					</p>
 				</div>
-				{extraExperience.map(experience=>(
+				{extraExperience.map((experience) => (
 					<div key={experience.id}>
 						<div className='position-date'>
-					<p>
-						<b>{experience.title}</b>
-					</p>
-					<p>
-						{experience.startDate || 'since'} to{' '}
-						{experience.endDate || 'when'}
-					</p>
-				</div>
-				<div className='experience-address'>
-					<p>
-						<b>{experience.employer || 'employer'}</b>:
-					</p>
-					<p>
-						{' '}
-						: {experience.city || 'city'} , {experience.country}
-					</p>
-				</div>
+							<p>
+								<b>{experience.title}</b>
+							</p>
+							<p>
+								{experience.startDate || 'since'} to{' '}
+								{experience.endDate || 'when'}
+							</p>
+						</div>
+						<div className='experience-address'>
+							<p>
+								<b>{experience.employer || 'employer'}</b>:
+							</p>
+							<p>
+								{' '}
+								: {experience.city || 'city'} ,{' '}
+								{experience.country}
+							</p>
+						</div>
 					</div>
 				))}
 			</div>

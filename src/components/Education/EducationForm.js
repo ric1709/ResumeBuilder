@@ -23,7 +23,7 @@ function EducationForm({editModal}) {
 		degree: degree || '',
 		fieldOfStudy: fieldOfStudy || '',
 		date: date || '',
-		id: Math.random().toString(),
+		id: Date.now().toString(),
 	})
 
 	const [showCountry, setShowCountry] = useState(false)

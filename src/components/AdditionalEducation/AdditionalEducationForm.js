@@ -22,7 +22,7 @@ function AdditionalEducationForm() {
 		degree:'',
 		fieldOfStudy:'',
 		date:'',
-		id: Math.random().toString(),
+		id:Date.now().toString(),
 	})
 
 	function onSaveDataToStore() {

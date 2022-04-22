@@ -1,0 +1,9 @@
+.skills-wrapper {
+	display: flex;
+	justify-content: space-between;
+	
+}
+.skills-img {
+	width: 565px;
+	height: 100%;
+}
