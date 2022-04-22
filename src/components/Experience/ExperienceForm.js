@@ -22,7 +22,7 @@ function ExperienceForm({editModal}) {
 		country: country || '',
 		startDate: startDate || '',
 		endDate: endDate || '',
-		id: Math.random().toString(),
+		id: Date.now().toString(),
 	})
 	const [showCountry, setShowCountry] = useState(false)
 	const [showEdit, setShowEdit] = useState(false)

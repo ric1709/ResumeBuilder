@@ -13,8 +13,6 @@ function AdditionalExperience() {
     const navigate=useNavigate()
     const debouncedCallback=useDebounce(onSaveExperienceDataToStore,1000)
     const [showCountry,setShowCountry]=useState(false)
-    const {extraExperience}=useSelector(state=>state.resume)
-    // console.log(extraExperience);
     const experience=useInput({
         title: '',
 		employer:'',
@@ -22,7 +20,7 @@ function AdditionalExperience() {
 		country:'',
 		startDate:'',
 		endDate: '',
-		id: Math.random().toString(),
+		id: Date.now().toString(),
     })
     function onSaveExperienceDataToStore(){
 		return dispatch(resumeActions.extraExperience(experience.value))

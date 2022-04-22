@@ -14,7 +14,6 @@ function SummaryForm() {
 	const {summary}=useSelector(state=>state.resume.summary)
 	const summaryInfo = useInput({
 		summary:summary||'',
-		id: Math.random().toString(),
 	})
 	function saveDataToStore() {
 		return dispatch(resumeActions.summary(summaryInfo.value))
@@ -29,10 +28,11 @@ function SummaryForm() {
 			<p className='summary-p'>Finish your resume with short summary</p>
 			<div className='summary-div'>
 				<textarea
-					cols='30'
+					cols='4'
 					rows='10'
 					className='summary-text'
 					name='summary'
+					maxLength={150}
 					value={summaryInfo.value.summary}
 					onChange={summaryInfo.onChange}
 				></textarea>

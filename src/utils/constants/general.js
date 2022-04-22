@@ -1,21 +1,73 @@
 export const SKILLS = [
-	'Computer proficiency',
-	'Leadership experience',
-	'Communication skills',
-	'Organizational know-how',
-	'People skills',
-	'Collaboration talent',
-	'Problem-solving abilities',
-	'Adaptability',
-	'Attention to detail',
-	'Collaboration',
-	'Communication',
-	'Creativity',
-	'Decision making',
-	'Multitasking',
-	'Self-motivation',
-	'Time management',
-	'Work ethic',
+	{
+		title:'Computer proficiency',
+		id:'a'
+	},
+	{
+		title:'Leadership experience',
+		id:'b'
+	},
+	{
+		title:'Communication skills',
+		id:'c'
+	},
+	{
+		title:'Organizational know-how',
+		id:'d'
+	},
+	{
+		title:'People skills',
+		id:'e'
+	},
+	{
+		title:'Collaboration talent',
+		id:'f'
+	},
+	{
+		title:'Problem-solving abilities',
+		id:'g'
+	},
+	{
+		title:'Adaptability',
+		id:'h'
+	},
+	{
+		title:'Attention to detail',
+		id:'i'
+	},
+	{
+		title:'Collaboration',
+		id:'j'
+	},
+	{
+		title:'Communication',
+		id:'k'
+	},
+	{
+		title:'Creativity',
+		id:'l'
+	},
+	{
+		title:'Decision making',
+		id:'m'
+	},
+	{
+		title:'Multitasking',
+		id:'n'
+	},
+	{
+		title:'Self-motivation',
+		id:'o'
+	},
+	{
+		title:'Time management',
+		id:'p'
+	},
+	{
+		title:'Work ethic',
+		id:'q'
+	},
+
 ]
 export const DEGREES = [
 	'Associate of Biotechnology',
