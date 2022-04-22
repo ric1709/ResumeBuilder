@@ -8,6 +8,7 @@ import Button from '../../UI/Button/Button'
 import './ContactsForm.css'
 import InputMask from 'react-input-mask'
 
+
 function ContactsForm() {
 	const { name, city, address, country, email, phone } = useSelector(
 		(state) => state.resume.contact,

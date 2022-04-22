@@ -1,73 +1,55 @@
 export const SKILLS = [
 	{
-		title:'Computer proficiency',
-		id:'a'
+		value: 'Computer proficiency',
 	},
 	{
-		title:'Leadership experience',
-		id:'b'
+		value: 'Leadership experience',
 	},
 	{
-		title:'Communication skills',
-		id:'c'
+		value: 'Communication skills',
 	},
 	{
-		title:'Organizational know-how',
-		id:'d'
+		value: 'Organizational know-how',
 	},
 	{
-		title:'People skills',
-		id:'e'
+		value: 'People skills',
 	},
 	{
-		title:'Collaboration talent',
-		id:'f'
+		value: 'Collaboration talent',
 	},
 	{
-		title:'Problem-solving abilities',
-		id:'g'
+		value: 'Problem-solving abilities',
 	},
 	{
-		title:'Adaptability',
-		id:'h'
+		value: 'Adaptability',
 	},
 	{
-		title:'Attention to detail',
-		id:'i'
+		value: 'Attention to detail',
 	},
 	{
-		title:'Collaboration',
-		id:'j'
+		value: 'Collaboration',
 	},
 	{
-		title:'Communication',
-		id:'k'
+		value: 'Communication',
 	},
 	{
-		title:'Creativity',
-		id:'l'
+		value: 'Creativity',
 	},
 	{
-		title:'Decision making',
-		id:'m'
+		value: 'Decision making',
 	},
 	{
-		title:'Multitasking',
-		id:'n'
+		value: 'Multitasking',
 	},
 	{
-		title:'Self-motivation',
-		id:'o'
+		value: 'Self-motivation',
 	},
 	{
-		title:'Time management',
-		id:'p'
+		value: 'Time management',
 	},
 	{
-		title:'Work ethic',
-		id:'q'
+		value: 'Work ethic',
 	},
-
 ]
 export const DEGREES = [
 	'Associate of Biotechnology',
@@ -374,5 +356,4 @@ export const DEGREES = [
 	'Master of Theology',
 	'Master of Urban Planning',
 	'Master of Veterinary Science',
-
 ]
