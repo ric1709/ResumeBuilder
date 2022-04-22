@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import useChangePage from '../../hooks/useChangePage'
 import useDebounce from '../../hooks/useDebounce'
@@ -10,7 +10,7 @@ import './SkillsForm.css'
 
 function SkillsForm() {
 	const dispatch=useDispatch()
-	const debouncedCallback=useDebounce(saveDataToStore,1500)
+	const debouncedCallback=useDebounce(saveDataToStore,800)
 	const changePage=useChangePage()
 	const skillInfo = useInput({
 		skill: '',

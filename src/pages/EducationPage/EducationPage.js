@@ -7,12 +7,12 @@ import ResumePreview from '../../components/Resume/ResumePreview';
 
 function EducationPage() {
     const [showModal,setShowModal]=useState(true)
-    const listUpStateFromForm=(state)=>{
+    const liftUpStateFromForm=(state)=>{
         setShowModal(state)
     }
     return (
         <div className='wrapper'>
-			<EducationForm editModal={listUpStateFromForm}/>
+			<EducationForm editModal={liftUpStateFromForm}/>
             {showModal && <ResumePreview/>}
 			<div className='rigthImg'>
 				<img className='img-education' 

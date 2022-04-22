@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Layout from '../components/Layout/Layout'
 import EditEducationPage from '../pages/EditEducationPage/EditEducationPage'
+import EditExperiencePage from '../pages/EditExperiencePage/EditExperiencePage'
 
 function AppRoutes() {
 	const ContactPage = React.lazy(() => import('../pages/ContactsPage/ContactPage'))
@@ -20,6 +21,7 @@ function AppRoutes() {
 					<Route path='contact' element={<ContactPage />} />
 					<Route path='experience' element={<ExperiencePage />} />
 					<Route path='add-experience' element={<AdditionalExperiencePage />} />
+					<Route path='edit-experience' element={<EditExperiencePage />} />
 					<Route path='education' element={<EducationPage />} />
 					<Route path='addEdu' element={<AdditionalEducationPage />} />
 					<Route path='eduction-edit' element={<EditEducationPage/>} />

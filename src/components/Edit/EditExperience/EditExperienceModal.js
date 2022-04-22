@@ -1,45 +1,45 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Button from '../../../UI/Button/Button'
-import './EditEducation.css'
+import './EditExperienceModal.css'
 import { RiPencilFill } from 'react-icons/ri'
 import { AiFillDelete } from 'react-icons/ai'
 import { resumeActions } from '../../../store/user-info-slice'
 import { useNavigate } from 'react-router-dom'
 
-function EditEducation({ onCloseModal }) {
+function EditExperienceModal({ onCloseModal }) {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
-	const { extraEducation } = useSelector((state) => state.resume)
+	const { extraExperience } = useSelector((state) => state.resume)
 
 	const removeEducation = (id) => {
-		dispatch(resumeActions.removeExtraEducaion(id))
+		dispatch(resumeActions.removeExtraExperience(id))
 	}
 	const editEducationHandler = (id) => {
-		navigate('/eduction-edit')
+		navigate('/edit-experience')
 		dispatch(resumeActions.edit(id))
 	}
-	useEffect(()=>{
-		if(!extraEducation){
-			onCloseModal()
-		}
-	},[extraEducation])
+    useEffect(()=>{
+        if(!extraExperience.length){
+            onCloseModal()
+        }
+    },[extraExperience])
 	return (
 		<>
 			<div className='main-edit-div'>
 				<header className='edit-header'>
-					<h1>Edit Education</h1>
+					<h1>Edit Experience</h1>
 				</header>
 				<main>
-					{extraEducation.map((edu) => (
-						<div className='wrapper-edit-block' key={edu.id}>
+					{extraExperience.map((el) => (
+						<div className='wrapper-edit-block' key={el.id}>
 							<div className='wrapper-edit'>
 								<div className='circle'></div>
 								<div className='wrapper-title'>
 									<p className='title'>
-										<b>{edu.school}</b>
+										<b>{el.title}</b>
 									</p>
-									<p className='desk'>{edu.degree}</p>
+									<p className='desk'>{el.employer}</p>
 								</div>
 							</div>
 							<div className='wrapper-icons'>
@@ -47,7 +47,7 @@ function EditEducation({ onCloseModal }) {
 									<RiPencilFill
 										fontSize='23px'
 										onClick={() => {
-											editEducationHandler(edu.id)
+											editEducationHandler(el.id)
 										}}
 									/>
 								</div>
@@ -55,7 +55,7 @@ function EditEducation({ onCloseModal }) {
 									<AiFillDelete
 										fontSize='23px'
 										onClick={() => {
-											removeEducation(edu.id)
+											removeEducation(el.id)
 										}}
 									/>
 								</div>
@@ -76,4 +76,4 @@ function EditEducation({ onCloseModal }) {
 	)
 }
 
-export default EditEducation
+export default EditExperienceModal

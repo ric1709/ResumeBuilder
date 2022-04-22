@@ -94,6 +94,9 @@ const resumeFillingSlice = createSlice({
 				})
 			}
 		},
+		editExperience(state,action){
+			state.extraExperience=state.extraExperience.map(el=>el.id === action.payload.id ? action.payload : el)
+		},
 		skills(state, action) {
 			if (action.payload.skill) {
 				state.skills.push(action.payload)
@@ -107,7 +110,10 @@ const resumeFillingSlice = createSlice({
 		},
 		edit(state,action){
 			state.id=action.payload
-		}
+		},
+		removeExtraExperience(state,action){
+			state.extraExperience=state.extraExperience.filter(el=>el.id !== action.payload)
+		},
 	},
 })
 
