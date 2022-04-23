@@ -4,11 +4,16 @@
 	height: 65px;
 	display: flex;
 	justify-content: space-between;
-	background-color: #012b35;
+	background-color: white;
 	align-items: center;
+	box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%),
+    0 1px 3px 0 rgb(0 0 0 / 12%);
 }
 .btn-div {
 	margin-right: 40px;
+}
+.wrapper-resume{
+	background: #edf1f3;
 }
 .btn-download {
 	width: 187px;
@@ -27,14 +32,15 @@
 	margin-left: 50px;
 }
 .title-name {
-	width: 187px;
+	width: 250px;
 	height: 50px;
 	border-style: none;
-	background: #012b35;
-	color: #fff;
+	background: white;
+	color: #10a1bf;
 	cursor: pointer;
 	border-radius: 3px;
 	font-size: 30px;
+	font-weight: 700;
 }
 .btn-download:hover {
 	opacity: 0.9;
@@ -51,7 +57,6 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background: #f5f5f5;
 }
 .wrapper-btn h4 {
 	font-family: 'Lato', sans-serif;

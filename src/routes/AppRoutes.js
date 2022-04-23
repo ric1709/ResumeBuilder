@@ -1,6 +1,8 @@
 import React, { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Layout from '../components/Layout/Layout'
+import Loading from '../components/Loading/Loading'
+import NotFoundPage from '../pages/NotFound/NotFoundPage'
 
 
 function AppRoutes() {
@@ -16,9 +18,9 @@ function AppRoutes() {
 	const EditExperiencePage = React.lazy(() => import('../pages/EditExperiencePage/EditExperiencePage'))
 	const EditEducationPage = React.lazy(() => import('../pages/EditEducationPage/EditEducationPage'))
 	return (
-		<Suspense fallback={<p>Loading...</p>}>
+		<Suspense fallback={<Loading/>}>
 			<Routes>
-				<Route path='/' element={<Navigate to ={'/contact'}/>} />
+				<Route path='/' element={<Navigate to ={'/resume'}/>} />
 				<Route path='/' element={<Layout />}>
 					<Route path='contact' element={<ContactPage />} />
 					<Route path='experience' element={<ExperiencePage />} />
@@ -32,6 +34,7 @@ function AppRoutes() {
 					<Route path='summary' element={<SummaryPage />} />
 					<Route path='resume' element={<ResumePage />} />
 				</Route>
+				<Route path='*' element={<NotFoundPage/>}/>
 			</Routes>
 		</Suspense>
 	)

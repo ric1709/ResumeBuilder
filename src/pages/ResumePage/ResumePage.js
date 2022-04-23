@@ -8,21 +8,22 @@ import useChangePage from '../../hooks/useChangePage'
 import { useReactToPrint } from 'react-to-print'
 
 
+
 function ResumePage() {
 	const changePage=useChangePage()
 	const componentRef=useRef(null)
-
 	const printResumeHandler=useReactToPrint({
 		content: ()=>componentRef.current,
 	})
 	const createNewResumeHandler=()=>{
-
+		localStorage.clear('@resume-data')
+		
 	}
 	return (
 		<div className='wrapper-resume'>
 			<div className='header-resume'>
 				<div className='title'>
-					<button className='title-name'>Resume</button>
+					<button className='title-name'>Your Resume</button>
 				</div>
 				<div className='btn-div'>
 					<button className='btn-download' onClick={printResumeHandler}>Download</button>
@@ -31,7 +32,7 @@ function ResumePage() {
 			<div className='content-resume'>
 				<div className='wrapper-btn'>
 					<h4>Edit Sections</h4>
-					<div className='add-btn btn-create'>
+					<div className='add-btn btn-create' onClick={createNewResumeHandler}>
 						<p>Create NEW</p>
 						<MdCreateNewFolder />
 					</div>
