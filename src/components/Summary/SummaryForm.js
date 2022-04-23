@@ -31,7 +31,7 @@ function SummaryForm() {
 					placeholder='Write your professional summary (300 character)'
 					className='summary-text'
 					name='summary'
-					maxLength='400'
+					maxLength='370'
 					value={summaryInfo.value.summary}
 					onChange={summaryInfo.onChange}
 				></textarea>

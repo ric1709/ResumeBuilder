@@ -44,7 +44,7 @@ function AdditionalEducationForm() {
 				<input
 					type='text'
 					className='add-education-input'
-					maxLength='15'
+					maxLength='35'
 					name='school'
 					value={edu.value.school}
 					onChange={edu.onChange}

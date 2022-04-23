@@ -1,14 +1,23 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import ResumePreview from '../../components/Resume/ResumePreview'
 import './ResumePage.css'
 import { FaPen } from 'react-icons/fa'
 import { IoArrowBack } from 'react-icons/io5'
 import { MdCreateNewFolder } from 'react-icons/md'
 import useChangePage from '../../hooks/useChangePage'
+import { useReactToPrint } from 'react-to-print'
 
 
 function ResumePage() {
 	const changePage=useChangePage()
+	const componentRef=useRef(null)
+
+	const printResumeHandler=useReactToPrint({
+		content: ()=>componentRef.current,
+	})
+	const createNewResumeHandler=()=>{
+
+	}
 	return (
 		<div className='wrapper-resume'>
 			<div className='header-resume'>
@@ -16,7 +25,7 @@ function ResumePage() {
 					<button className='title-name'>Resume</button>
 				</div>
 				<div className='btn-div'>
-					<button className='btn-download'>Download</button>
+					<button className='btn-download' onClick={printResumeHandler}>Download</button>
 				</div>
 			</div>
 			<div className='content-resume'>
@@ -26,7 +35,7 @@ function ResumePage() {
 						<p>Create NEW</p>
 						<MdCreateNewFolder />
 					</div>
-					<div className='add-btn' onClick={changePage('/contact')}>
+					<div className='add-btn' onClick={changePage('/contact',true)}>
 						<p>Contats</p>
 						<FaPen />
 					</div>
@@ -51,7 +60,7 @@ function ResumePage() {
 						<IoArrowBack fontSize='30' />
 					</div>
 				</div>
-				<ResumePreview />
+				<ResumePreview componentRef={componentRef}/>
 			</div>
 		</div>
 	)

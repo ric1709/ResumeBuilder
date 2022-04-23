@@ -28,6 +28,7 @@ function SkillsForm({ editModal }) {
 	}
 	const saveSkillsToStoreHandler = () => {
 		debouncedCallback()
+		setSkill('')
 	}
 	useEffect(() => {
 		if (skills.length) {
@@ -54,7 +55,7 @@ function SkillsForm({ editModal }) {
 					type='text'
 					className='skills-input'
 					maxLength='30'
-					placeholder='Eg:Team Building'
+					placeholder='Eg:Calculating'
 					name='skill'
 					value={skill}
 					onChange={(e)=>setSkill(e.target.value)}

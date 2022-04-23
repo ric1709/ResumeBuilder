@@ -9,7 +9,7 @@ import {AiOutlineArrowRight} from 'react-icons/ai'
 import {FaListUl} from 'react-icons/fa'
 import {BsCheckLg} from 'react-icons/bs'
 
-function ResumePreview() {
+function ResumePreview({componentRef}) {
 	const path = useLocation()
 	const { resume } = useSelector((state) => state)
 	const {
@@ -33,11 +33,11 @@ function ResumePreview() {
 
 	useEffect(() => {
 		window.onbeforeunload = () => {
-			// return localStorage.setItem('@resume-data', JSON.stringify(resume))
+			return localStorage.setItem('@resume-data', JSON.stringify(resume))
 		}
 	}, [resume])
 	return (
-		<div className={changePreviewPage ? 'wrapper-preview' : 'wrapper-preview-mini'}>
+		<div ref={componentRef} className={changePreviewPage ? 'wrapper-preview' : 'wrapper-preview-mini'}>
 			<div className='rBlock'>
 				<h2>{contact.name || 'Contact Information'}</h2>
 				<p><MdOutlinePhoneEnabled/><span>{contact.phone || 'Phone Number'}</span></p>

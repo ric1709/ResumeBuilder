@@ -69,7 +69,7 @@ function EducationForm({editModal}) {
 				<input
 					type='text'
 					className='education-input'
-					maxLength='25'
+					maxLength='35'
 					name='school'
 					value={edu.value.school}
 					onChange={edu.onChange}
