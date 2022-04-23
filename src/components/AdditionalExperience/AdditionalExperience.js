@@ -11,6 +11,7 @@ import './AdditionalExperience.css'
 function AdditionalExperience() {
     const dispatch=useDispatch()
     const navigate=useNavigate()
+	const changePage=useChangePage()
     const debouncedCallback=useDebounce(onSaveExperienceDataToStore,1000)
     const [showCountry,setShowCountry]=useState(false)
     const experience=useInput({
@@ -30,7 +31,7 @@ function AdditionalExperience() {
     }
     const onSaveExperienceDataToStoreHandler=()=>{
         debouncedCallback()
-        navigate('/experience')
+        navigate('/experience',{replace:true})
     }
     return (
         <div className='main-funnel'>
@@ -108,7 +109,7 @@ function AdditionalExperience() {
 				</div>
 			</div>
 			<div className='btn'>
-				<Button className='back'>CENCEL</Button>
+				<Button className='back' onClick={changePage('/experience',true)}>CANCEL</Button>
 				<Button className='next' onClick={onSaveExperienceDataToStoreHandler}>
 					SAVE
 				</Button>

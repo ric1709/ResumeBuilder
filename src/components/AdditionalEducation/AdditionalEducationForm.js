@@ -30,7 +30,7 @@ function AdditionalEducationForm() {
 	}
 	const onSaveDataToStoreHandler = () => {
 		debouncedCallback()
-		navigate('/education')
+		navigate('/education',{replace:true})
 	}
 	const showCountryHandler = () => {
 		setShowCountry((prevState) => !prevState)
@@ -122,8 +122,8 @@ function AdditionalEducationForm() {
 				</div>
 			</div>
 			<div className='btn'>
-				<Button className='back' onClick={changePage('/education')}>
-					CENCEL
+				<Button className='back' onClick={changePage('/education',true)}>
+					CANCEL
 				</Button>
 				<Button className='next' onClick={onSaveDataToStoreHandler}>
 					SAVE

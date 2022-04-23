@@ -115,9 +115,8 @@ function ContactsForm() {
 					onChange={user.onChange}
 				/>
 			</div>
-			<div className='btn'>
-				<Button className='back'>BACK</Button>
-				<Button className='next' onClick={changePage('/education')}>
+			<div className='btn-contacts'>
+				<Button className='next' onClick={changePage('/summary')}>
 					CONTINUE
 				</Button>
 			</div>

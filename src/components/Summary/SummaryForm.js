@@ -38,8 +38,8 @@ function SummaryForm() {
 				></textarea>
 			</div>
 			<div className='btn-summary'>
-				<Button className='back'>BACK</Button>
-				<Button className='next' onClick={changePage('/resume')}>
+				<Button className='back' onClick={changePage('/contact')}>BACK</Button>
+				<Button className='next' onClick={changePage('/skills')}>
 					CONTINUE
 				</Button>
 			</div>

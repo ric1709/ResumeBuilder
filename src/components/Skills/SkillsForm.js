@@ -65,8 +65,8 @@ function SkillsForm({ editModal }) {
 				</button>
 			</div>
 			<div className='btn'>
-				<Button className='back'>BACK</Button>
-				<Button className='next' onClick={changePage('/summary')}>
+				<Button className='back' onClick={changePage('/summary')}>BACK</Button>
+				<Button className='next' onClick={changePage('/experience')}>
 					CONTINUE
 				</Button>
 			</div>

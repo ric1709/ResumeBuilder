@@ -144,8 +144,8 @@ function ExperienceForm({editModal}) {
 					</button>
 				</div>
 				<div className='btn'>
-					<Button className='back'>BACK</Button>
-					<Button className='next' onClick={changePage('/skills')}>
+					<Button className='back' onClick={changePage('/skills')}>BACK</Button>
+					<Button className='next' onClick={changePage('/education')}>
 						CONTINUE
 					</Button>
 				</div>

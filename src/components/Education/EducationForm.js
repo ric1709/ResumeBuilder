@@ -152,8 +152,8 @@ function EducationForm({editModal}) {
 				</button>
 			</div>
 			<div className='btn'>
-				<Button className='back'>BACK</Button>
-				<Button className='next' onClick={changePage('/experience')}>
+				<Button className='back' onClick={changePage('/experience')}>BACK</Button>
+				<Button className='next' onClick={changePage('/resume')}>
 					CONTINUE
 				</Button>
 			</div>

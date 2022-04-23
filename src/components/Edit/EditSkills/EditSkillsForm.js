@@ -53,8 +53,8 @@ function EditSkillsForm() {
 				</button>
 			</div>
 			<div className='btn'>
-				<Button className='back'>CANCEL</Button>
-				<Button className='next' onClick={changePage('/skills')}>
+				<Button className='back' onClick={changePage('/skills',true)}>CANCEL</Button>
+				<Button className='next' onClick={changePage('/skills',true)}>
 					SAVE
 				</Button>
 			</div>

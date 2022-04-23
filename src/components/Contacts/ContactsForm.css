@@ -33,9 +33,9 @@
     border: 0.5px solid grey;
     margin-top: 3px;
 }
-.btn{
+.btn-contacts{
     width: 430px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     margin-top: 20px;
 }
