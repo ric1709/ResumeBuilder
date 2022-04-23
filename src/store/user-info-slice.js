@@ -102,7 +102,7 @@ const resumeFillingSlice = createSlice({
 				skill:action.payload,
 				id:Date.now().toString()
 			}
-			if (action.payload) {
+			if (action.payload ) {
 				state.skills.push(newSkill)
 			}
 		},

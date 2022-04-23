@@ -53,6 +53,7 @@ function SkillsForm({ editModal }) {
 				<input
 					type='text'
 					className='skills-input'
+					maxLength='30'
 					placeholder='Eg:Team Building'
 					name='skill'
 					value={skill}

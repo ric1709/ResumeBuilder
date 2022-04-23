@@ -60,6 +60,7 @@ function ContactsForm() {
 				<label>Address</label>
 				<input
 					type='text'
+					maxLength='10'
 					className='contact-input'
 					name='address'
 					value={user.value.address}
@@ -70,6 +71,7 @@ function ContactsForm() {
 				<label>City</label>
 				<input
 					type='text'
+					maxLength='15'
 					className='contact-input group'
 					name='city'
 					value={user.value.city}
@@ -81,6 +83,7 @@ function ContactsForm() {
 					<label>Country</label>
 					<input
 						type='text'
+						maxLength='15'
 						className='contact-input'
 						name='country'
 						value={user.value.country}
@@ -97,7 +100,8 @@ function ContactsForm() {
 			<div className='contact-input-div'>
 				<label>Email</label>
 				<input
-					type='text'
+					type='email'
+					maxLength='30'
 					className='contact-input'
 					name='email'
 					value={user.value.email}

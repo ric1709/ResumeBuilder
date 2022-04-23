@@ -69,7 +69,7 @@ function EducationForm({editModal}) {
 				<input
 					type='text'
 					className='education-input'
-					maxLength='15'
+					maxLength='25'
 					name='school'
 					value={edu.value.school}
 					onChange={edu.onChange}
@@ -79,6 +79,7 @@ function EducationForm({editModal}) {
 				<label>City</label>
 				<input
 					type='text'
+					maxLength='25'
 					className='education-input group'
 					name='city'
 					value={edu.value.city}
@@ -90,6 +91,7 @@ function EducationForm({editModal}) {
 					<label>Country</label>
 					<input
 						type='text'
+						maxLength='25'
 						className='education-input'
 						name='country'
 						value={edu.value.country}
@@ -106,6 +108,7 @@ function EducationForm({editModal}) {
 			<div className='education-input-div select'>
 				<label>Degree</label>
 				<select
+					maxLength='25'
 					className='education-select'
 					name='degree'
 					value={edu.value.degree}
@@ -128,6 +131,7 @@ function EducationForm({editModal}) {
 				<label>Field of study</label>
 				<input
 					type='text'
+					maxLength='25'
 					className='education-input'
 					name='fieldOfStudy'
 					value={edu.value.fieldOfStudy}

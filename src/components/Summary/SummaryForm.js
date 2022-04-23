@@ -28,11 +28,10 @@ function SummaryForm() {
 			<p className='summary-p'>Finish your resume with short summary</p>
 			<div className='summary-div'>
 				<textarea
-					cols='4'
-					rows='10'
+					placeholder='Write your professional summary (300 character)'
 					className='summary-text'
 					name='summary'
-					maxLength={150}
+					maxLength='400'
 					value={summaryInfo.value.summary}
 					onChange={summaryInfo.onChange}
 				></textarea>

@@ -1,63 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300;400;500;600;700&family=Lato:wght@100;300;400;700&family=Work+Sans:wght@100;200;300;400&display=swap');
 .wrapper-preview {
-	width: 600px;
-	height: 100%;
+	width: 800px;
+	min-height: 700px;
+	height: auto;
 	background-color: whitesmoke;
-	color: black;
 	display: flex;
-	flex-direction: column;
-	padding: 20px 60px;
-    box-shadow: 0 1px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%),
-    0 1px 3px 0 rgb(0 0 0 / 12%);
+	margin-top: 15px;
+	margin-right: 50px;
 }
 .wrapper-preview-mini{
-	width: 320px;
-	min-height: 530px;
-    max-height: 100%;
+	width: 400px;
+	min-height: 500px;
+	height: auto;
 	background-color: whitesmoke;
-	color: black;
 	display: flex;
-	flex-direction: column;
-	padding: 20px 60px;
-    box-shadow: 0 1px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%),
-    0 1px 3px 0 rgb(0 0 0 / 12%);
-    font-size: 9px;
-    position: absolute;
-    left: 750px;
-    top: 140px;
-    z-index: 100;
-    overflow: hidden;
+	margin-top: 15px;
+	margin-right: 50px;
+	position:absolute;
+	top: 22%;
+	left: 50%;
 }
-.contact-info {
+.wrapper-preview-mini .rBlock {
+	width: 110px;
+}
+.wrapper-preview-mini .rBlock h2{
+	font-size: 18px;
+}
+.wrapper-preview-mini .rBlock p{
+	font-size: 8px;
+}
+.rBlock {
+	background: #0ea0c0;
+	padding: 0 30px;
+	width: 200px;
+}
+.rBlock h2 {
+	word-wrap: break-word;
+	font-size: 26px;
+	font-family: 'Akshar', sans-serif;
+	font-weight: 400;
+}
+.rBlock p {
+	font-size: 13px;
+	font-family: 'Work Sans', sans-serif;
+	align-items: center;
 	display: flex;
 }
-.skill-list {
-    text-align: center;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: repeat(4, 1fr);
-    text-align: start;
+.rBlock p span{
+	margin-left: 5px;
 }
-.summary-item li{
-    margin-top: 10px;
-    padding-top: 15px;
+.rBlock h2 {
+	word-wrap: break-word;
+	font-family: 'Work Sans', sans-serif;
 }
-.position-date{
-    display: flex;
-    justify-content: space-between;
-    height: 25px;
+.block-skills {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 2px 0;
+	text-align: center;
+	border-bottom: 1px solid #012a35;
+	font-family: 'Akshar', sans-serif;
+	font-weight: 500;
 }
-.experience-address{
-    display: flex;
-    height: 20px;
-    margin-bottom: 15px;
+.block-skills span{
+	margin-left: 5px;
 }
-.education-item{
-    display: flex;
-    justify-content: space-between;
-    height: 25px;
+/* Left block */
+
+.LBlock {
+	padding: 0 15px;
 }
-.education-address{
-    display: flex;
-    height: 20px;
-    margin-bottom: 15px;
+.wrapper-preview-mini .LBlock h3{
+	font-size: 15px;
+}
+.wrapper-preview-mini .LBlock p{
+	font-size: 10px;
+}
+.wrapper-preview-mini .LBlock h4{
+	font-size: 10px;
+}
+.LBlock h3 {
+	font-family: 'Akshar', sans-serif;
+	color: rgb(5, 179, 179);
+	font-size: 22px;
+}
+.LBlock p {
+	font-family: 'Akshar', sans-serif;
+	font-size: 14px;
+	width: 500px;
+	word-wrap: break-word;
+	margin: 0;
+}
+.wrapper-preview-mini .LBlock p{
+	width: 200px;
+}
+.poragraph h4 {
+	font-family: 'Akshar', sans-serif;
+	font-weight: 300;
+	font-size: 15px;
+	margin: 5px 0 5px 0;
+	display: flex;
+	align-items: center;
+}
+.poragraph p {
+	font-family: 'Work Sans', sans-serif;
 }

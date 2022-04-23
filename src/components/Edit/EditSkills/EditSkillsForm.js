@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import useChangePage from '../../../hooks/useChangePage'
 import useDebounce from '../../../hooks/useDebounce'
 import { resumeActions } from '../../../store/user-info-slice'
@@ -8,6 +9,7 @@ import './EditSkillsForm.css'
 
 function EditSkillsForm() {
 	const dispatch = useDispatch()
+	const navigate=useNavigate()
 	const debouncedCallback = useDebounce(saveDataToStore, 800)
 	const changePage = useChangePage()
 	const { skills, id } = useSelector((state) => state.resume)
@@ -22,6 +24,8 @@ function EditSkillsForm() {
 	}
 	const saveSkillsToStoreHandler = () => {
 		debouncedCallback()
+		navigate('/skills',{replace:true})
+
 	}
 	return (
 		<div className='skills-main-funnel'>
@@ -47,14 +51,9 @@ function EditSkillsForm() {
 					}
 				/>
 			</div>
-			<div className='additional-btn-div'>
-				<button className='add-btn' onClick={saveSkillsToStoreHandler}>
-					+ADD SKILLS
-				</button>
-			</div>
 			<div className='btn'>
 				<Button className='back' onClick={changePage('/skills',true)}>CANCEL</Button>
-				<Button className='next' onClick={changePage('/skills',true)}>
+				<Button className='next' onClick={saveSkillsToStoreHandler}>
 					SAVE
 				</Button>
 			</div>

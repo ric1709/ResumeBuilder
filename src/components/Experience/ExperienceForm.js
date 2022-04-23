@@ -80,6 +80,7 @@ function ExperienceForm({editModal}) {
 					<input
 						type='text'
 						className='experience-input'
+						maxLength='25'
 						name='employer'
 						value={value.employer}
 						onChange={onChange}
@@ -90,6 +91,7 @@ function ExperienceForm({editModal}) {
 					<input
 						type='text'
 						className='experience-input group'
+						maxLength='25'
 						name='city'
 						value={value.city}
 						onChange={onChange}
@@ -101,6 +103,7 @@ function ExperienceForm({editModal}) {
 						<input
 							type='text'
 							className='experience-input'
+							maxLength='25'
 							name='country'
 							value={value.country}
 							onChange={onChange}

@@ -2,6 +2,12 @@ import React, { useEffect, useState } from 'react'
 import './ResumePreview.css'
 import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
+import {MdOutlinePhoneEnabled} from 'react-icons/md'
+import {IoIosMail} from 'react-icons/io'
+import {FaAddressCard} from 'react-icons/fa'
+import {AiOutlineArrowRight} from 'react-icons/ai'
+import {FaListUl} from 'react-icons/fa'
+import {BsCheckLg} from 'react-icons/bs'
 
 function ResumePreview() {
 	const path = useLocation()
@@ -31,122 +37,51 @@ function ResumePreview() {
 		}
 	}, [resume])
 	return (
-		<div
-			className={
-				changePreviewPage ? 'wrapper-preview' : 'wrapper-preview-mini'
-			}
-		>
-			<div className='contact-info'>
-				<h1>{contact.name || 'Contact Information'}</h1>
-				<hr />
-				<div>
-					<p>
-						{contact.address || 'adress'}, {contact.city || 'city'},{' '}
-						{contact.country}{' '}
-					</p>
-					<p>{contact.phone || 'phone'}</p>
-					<p>{contact.email || 'email'}</p>
-				</div>
-			</div>
-			<div className='summary'>
-				<h2>Professional Summary</h2>
-				<hr />
-				<div className='summary-item'>
-					<p>{summary.summary}</p>
-				</div>
-			</div>
-			<div className='skills'>
-				<h2>Skills</h2>
-				<hr />
-				<div className='skill-list'>
-					{skills.map((el) => (
-						<li key={el.skill}>{el.skill}</li>
-					))}
-				</div>
-			</div>
-			<div className='experience'>
-				<h2>Experience</h2>
-				<hr />
-				<div className='position-date'>
-					<p>
-						<b>{experience.title}</b>
-					</p>
-					<p>
-						{experience.startDate || 'since'} to{' '}
-						{experience.endDate || 'when'}
-					</p>
-				</div>
-				<div className='experience-address'>
-					<p>
-						<b>{experience.employer || 'employer'}</b>:
-					</p>
-					<p>
-						{' '}
-						: {experience.city || 'city'} , {experience.country}
-					</p>
-				</div>
-				{extraExperience.map((experience) => (
-					<div key={experience.id}>
-						<div className='position-date'>
-							<p>
-								<b>{experience.title}</b>
-							</p>
-							<p>
-								{experience.startDate || 'since'} to{' '}
-								{experience.endDate || 'when'}
-							</p>
-						</div>
-						<div className='experience-address'>
-							<p>
-								<b>{experience.employer || 'employer'}</b>:
-							</p>
-							<p>
-								{' '}
-								: {experience.city || 'city'} ,{' '}
-								{experience.country}
-							</p>
-						</div>
-					</div>
+		<div className={changePreviewPage ? 'wrapper-preview' : 'wrapper-preview-mini'}>
+			<div className='rBlock'>
+				<h2>{contact.name || 'Contact Information'}</h2>
+				<p><MdOutlinePhoneEnabled/><span>{contact.phone || 'Phone Number'}</span></p>
+				<p><IoIosMail/><span>{contact.email || 'Email'}</span></p>
+				<p><FaAddressCard/><span>{contact.address || 'Address'} , {contact.city} , {contact.country}</span></p>
+				<div className='block-skills'><FaListUl/><span>SKILLS</span></div>
+				{skills.map(el=>(
+					<p key={el.id}><BsCheckLg/> <span>{el.skill}</span></p>
 				))}
 			</div>
-			<div className='education'>
-				<h2>Education</h2>
-				<hr />
-				<div className='education-item'>
-					<p>
-						<b>{education.degree || 'degree'}</b> ::{' '}
-						{education.fieldOfStudy || 'field of study'}
-					</p>
-					<p>{education.date}</p>
+			<div className='LBlock'>
+				<div className='poragraph'>
+					<h3>PROFESSIONAL SUMMARY</h3>
+					<p>{summary.summary}</p>
 				</div>
-				<div className='education-address'>
-					<p>
-						<b>{education.school || 'school name'}</b> :
-					</p>
-					<p>
-						{' '}
-						: {education.city || 'city'} , {education.country}
-					</p>
+				<div className='poragraph'>
+					<h3>EXPERIENCE</h3>
+					<h4>{experience.title}</h4>
+					<h4>{experience.employer}</h4>
+					<h4>{experience.city } , {experience.country}</h4>
+					<h4>{experience.startDate}<AiOutlineArrowRight/> {experience.endDate}</h4>
 				</div>
-				{extraEducation.map((education) => (
-					<div key={education.id}>
-						<div className='education-item'>
-							<p>
-								<b>{education.degree}</b> ::{' '}
-								{education.fieldOfStudy}
-							</p>
-							<p>{education.date}</p>
-						</div>
-						<div className='education-address'>
-							<p>
-								<b>{education.school}</b> :
-							</p>
-							<p>
-								{' '}
-								:{education.city} , {education.country}
-							</p>
-						</div>
-					</div>
+				{extraExperience.map(experience=>(
+					<div className='poragraph'>
+					<h3>EXPERIENCE</h3>
+					<h4>{experience.title}</h4>
+					<h4>{experience.employer}</h4>
+					<h4>{experience.city} {experience.country}</h4>
+					<h4>{experience.startDate}<AiOutlineArrowRight/> {experience.endDate}</h4>
+				</div>
+				))}
+				<div className='poragraph'>
+					<h3>EDUCATION</h3>
+					<h4>{education.degree} : {education.fieldOfStudy}</h4>
+					<h4>{education.city} , {education.country}</h4>
+					<h4>{education.date}</h4>
+				</div>
+				{extraEducation.map(education=>(
+					<div className='poragraph'>
+					<h3>EDUCATION</h3>
+					<h4>{education.degree} : {education.fieldOfStudy}</h4>
+					<h4>{education.city} , {education.country}</h4>
+					<h4>{education.date}</h4>
+				</div>
 				))}
 			</div>
 		</div>
