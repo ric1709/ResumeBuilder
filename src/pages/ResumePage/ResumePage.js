@@ -6,18 +6,24 @@ import { IoArrowBack } from 'react-icons/io5'
 import { MdCreateNewFolder } from 'react-icons/md'
 import useChangePage from '../../hooks/useChangePage'
 import { useReactToPrint } from 'react-to-print'
+import { useDispatch } from 'react-redux'
+import { resumeActions } from '../../store/user-info-slice'
+import { useNavigate } from 'react-router-dom'
 
 
 
 function ResumePage() {
+	const dispatch=useDispatch()
 	const changePage=useChangePage()
+	const navigate=useNavigate()
 	const componentRef=useRef(null)
 	const printResumeHandler=useReactToPrint({
 		content: ()=>componentRef.current,
 	})
 	const createNewResumeHandler=()=>{
+		dispatch(resumeActions.newResume())
+		navigate('/contact')
 		localStorage.clear('@resume-data')
-		
 	}
 	return (
 		<div className='wrapper-resume'>

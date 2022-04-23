@@ -8,7 +8,6 @@ import Button from '../../UI/Button/Button'
 import './ContactsForm.css'
 import InputMask from 'react-input-mask'
 
-
 function ContactsForm() {
 	const { name, city, address, country, email, phone } = useSelector(
 		(state) => state.resume.contact,
@@ -29,16 +28,14 @@ function ContactsForm() {
 	const showCountryHandler = () => {
 		setShowCountry((prevState) => !prevState)
 	}
-
 	const { value } = user
+
 	function sendContantDataToStore() {
 		return dispatch(resumeActions.contacts(value))
 	}
-
 	useEffect(() => {
 		debouncedCallback()
 	}, [debouncedCallback])
-
 	return (
 		<div className='main-funnel'>
 			<h1 className='h1'>Let's complete your Resume Heading</h1>

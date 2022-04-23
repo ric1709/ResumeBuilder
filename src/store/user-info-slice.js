@@ -8,7 +8,7 @@ const initState = {
 	extraExperience: [],
 	skills: [],
 	summary: {},
-	id:''
+	id: '',
 }
 const resumeData = localStorage.getItem('@resume-data')
 	? JSON.parse(localStorage.getItem('@resume-data'))
@@ -56,8 +56,10 @@ const resumeFillingSlice = createSlice({
 				})
 			}
 		},
-		editEducaion(state,action){
-			state.extraEducation=state.extraEducation.map(el=>el.id === action.payload.id ? action.payload : el)
+		editEducaion(state, action) {
+			state.extraEducation = state.extraEducation.map((el) =>
+				el.id === action.payload.id ? action.payload : el,
+			)
 		},
 		experienceInfo(state, action) {
 			state.experience = action.payload
@@ -75,7 +77,7 @@ const resumeFillingSlice = createSlice({
 					action.payload.endDate
 				) {
 					state.extraExperience.push(action.payload)
-				} 
+				}
 			} else {
 				state.extraExperience.map((el) => {
 					if (el.id !== action.payload.id) {
@@ -94,35 +96,52 @@ const resumeFillingSlice = createSlice({
 				})
 			}
 		},
-		editExperience(state,action){
-			state.extraExperience=state.extraExperience.map(el=>el.id === action.payload.id ? action.payload : el)
+		editExperience(state, action) {
+			state.extraExperience = state.extraExperience.map((el) =>
+				el.id === action.payload.id ? action.payload : el,
+			)
 		},
 		skills(state, action) {
-			const newSkill={
-				skill:action.payload,
-				id:Date.now().toString()
+			const newSkill = {
+				skill: action.payload,
+				id: Date.now().toString(),
 			}
-			if (action.payload ) {
+			if (action.payload) {
 				state.skills.push(newSkill)
 			}
 		},
-		editSkills(state,action){
-			state.skills=state.skills.map(el=>el.id === action.payload.id ? action.payload : el)
+		editSkills(state, action) {
+			state.skills = state.skills.map((el) =>
+				el.id === action.payload.id ? action.payload : el,
+			)
 		},
 		summary(state, action) {
 			state.summary = action.payload
 		},
-		removeExtraEducaion(state,action){
-			state.extraEducation=state.extraEducation.filter(edu=>edu.id !== action.payload)
+		removeExtraEducaion(state, action) {
+			state.extraEducation = state.extraEducation.filter(
+				(edu) => edu.id !== action.payload,
+			)
 		},
-		edit(state,action){
-			state.id=action.payload
+		edit(state, action) {
+			state.id = action.payload
 		},
-		removeExtraExperience(state,action){
-			state.extraExperience=state.extraExperience.filter(el=>el.id !== action.payload)
+		removeExtraExperience(state, action) {
+			state.extraExperience = state.extraExperience.filter(
+				(el) => el.id !== action.payload,
+			)
 		},
-		removeSkills(state,action){
-			state.skills=state.skills.filter(el=>el.id !== action.payload)
+		removeSkills(state, action) {
+			state.skills = state.skills.filter((el) => el.id !== action.payload)
+		},
+		newResume(state) {
+			state.contact = {}
+			state.education = {}
+			state.extraEducation = []
+			state.experience = {}
+			state.extraExperience = []
+			state.skills = []
+			state.summary = {}
 		},
 	},
 })
