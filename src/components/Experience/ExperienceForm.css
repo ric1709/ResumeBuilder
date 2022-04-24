@@ -57,7 +57,7 @@
     height: 40px;
 }
 .show-country{
-    width: 130px;
+    width: 149px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -95,7 +95,7 @@
 	justify-content: space-between;
 }
 .edit-button{
-	width: 100px;
+	width: 130px;
 	height: 30px;
 	background: #00c293;
 	border-style: none;

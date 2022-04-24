@@ -7,14 +7,14 @@ import { resumeActions } from '../../store/user-info-slice'
 import Button from '../../UI/Button/Button'
 import EditSkillsModal from '../Edit/EditSkills/EditSkillsModal'
 import './SkillsForm.css'
-
+import {useTranslation} from 'react-i18next'
 
 function SkillsForm({ editModal }) {
 	const dispatch = useDispatch()
 	const debouncedCallback = useDebounce(saveDataToStore, 800)
 	const changePage = useChangePage()
 	const { skills } = useSelector((state) => state.resume)
-	
+	const {t}=useTranslation()
 	const [showEdit, setShowEdit] = useState(false)
 	const [showEditModal, setShowEditModal] = useState(false)
 	const [skill,setSkill]=useState('')
@@ -40,17 +40,17 @@ function SkillsForm({ editModal }) {
 
 	return (
 		<div className='skills-main-funnel'>
-			<h1 className='skills-h1'>Skills</h1>
+			<h1 className='skills-h1'>{t('skills')}</h1>
 			<div className='skills-edit-div'>
-				<p className='skills-p'>Highlight 6-8 of your top skills.</p>
+				<p className='skills-p'>{t('skillsH')}</p>
 				{showEdit && (
 					<button className='edit-button' onClick={callEditModal}>
-						<b>EDIT</b>
+						<b>{t('edit')}</b>
 					</button>
 				)}
 			</div>
 			<div className='skills-input-div'>
-				<label>Add your skills</label>
+				<label>{t('addSkills')}</label>
 				<input
 					type='text'
 					className='skills-input'
@@ -63,13 +63,13 @@ function SkillsForm({ editModal }) {
 			</div>
 			<div className='additional-btn-div'>
 				<button className='add-btn' onClick={saveSkillsToStoreHandler}>
-					+ADD SKILLS
+					{t('addS')}
 				</button>
 			</div>
 			<div className='btn'>
-				<Button className='back' onClick={changePage('/summary')}>BACK</Button>
+				<Button className='back' onClick={changePage('/summary')}>{t('back')}</Button>
 				<Button className='next' onClick={changePage('/experience')}>
-					CONTINUE
+					{t('continue')}
 				</Button>
 			</div>
 			{showEditModal &&

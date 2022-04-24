@@ -9,10 +9,13 @@ import Button from '../../UI/Button/Button'
 import { DEGREES } from '../../utils/constants/general'
 import EditEducation from '../Edit/EditEducation/EditEducation'
 import './EducationForm.css'
+import {useTranslation} from 'react-i18next'
+
 
 function EducationForm({editModal}) {
 	const dispatch = useDispatch()
 	const changePage = useChangePage()
+	const {t}=useTranslation()
 	const debouncedCallback = useDebounce(sendEducationDataToStore, 800)
 	const { education, extraEducation } = useSelector((state) => state.resume)
 	const { school, city, country, degree, fieldOfStudy, date } = education
@@ -53,19 +56,19 @@ function EducationForm({editModal}) {
 
 	return (
 		<div className='main-funnel'>
-			<h1 className='h1'>Education</h1>
+			<h1 className='h1'>{t('edu')}</h1>
 			<div className='intro-div'>
-				<p className='p'>Where did you go to school?</p>
+				<p className='p'>{t('eduP')}</p>
 				{showEdit && (
 					<button className='edit-button' onClick={callEditModal}>
-						<b>EDIT</b>
+						<b>{t('edit')}</b>
 					</button>
 				)}
 			</div>
 			{showEditModal && ReactDOM.createPortal(<div className="backdrop"></div>,document.getElementById('backdrop'))}
 			{showEditModal && ReactDOM.createPortal(<EditEducation onCloseModal={callEditModal}/>,document.getElementById('modal'))}
 			<div className='education-input-div'>
-				<label>School Name</label>
+				<label>{t('school')}</label>
 				<input
 					type='text'
 					className='education-input'
@@ -76,7 +79,7 @@ function EducationForm({editModal}) {
 				/>
 			</div>
 			<div className='education-input-div'>
-				<label>City</label>
+				<label>{t('city')}</label>
 				<input
 					type='text'
 					maxLength='25'
@@ -88,7 +91,7 @@ function EducationForm({editModal}) {
 			</div>
 			{showCountry && (
 				<div className='education-input-div'>
-					<label>Country</label>
+					<label>{t('country')}</label>
 					<input
 						type='text'
 						maxLength='25'
@@ -102,11 +105,11 @@ function EducationForm({editModal}) {
 			<div className='show-country'>
 				<input type='checkbox' onClick={showCountryHandler} />
 				<label>
-					<b>Show Country</b>
+					<b>{t('showC')}</b>
 				</label>
 			</div>
 			<div className='education-input-div select'>
-				<label>Degree</label>
+				<label>{t('degree')}</label>
 				<select
 					maxLength='25'
 					className='education-select'
@@ -115,7 +118,7 @@ function EducationForm({editModal}) {
 					onChange={edu.onChange}
 				>
 					<option value='' key='1'>
-						Select Your Degree
+					{t('select')}
 					</option>
 					<option value='High School Diploma' key='2'>
 						High School Diploma
@@ -128,7 +131,7 @@ function EducationForm({editModal}) {
 				</select>
 			</div>
 			<div className='education-input-div'>
-				<label>Field of study</label>
+				<label>{t('field')}</label>
 				<input
 					type='text'
 					maxLength='25'
@@ -140,7 +143,7 @@ function EducationForm({editModal}) {
 			</div>
 			<div>
 				<div className='start-date'>
-					<label className='label'>Graduation Date</label>
+					<label className='label'>{t('graduate')}</label>
 					<input
 						type='date'
 						className='education-input date'
@@ -152,13 +155,13 @@ function EducationForm({editModal}) {
 			</div>
 			<div className='additional-btn-div'>
 				<button className='add-btn' onClick={changePage('/addEdu')}>
-					+ADD ANOTHER EDUCATION
+					{t('addEdu')}
 				</button>
 			</div>
 			<div className='btn'>
-				<Button className='back' onClick={changePage('/experience')}>BACK</Button>
+				<Button className='back' onClick={changePage('/experience')}>{t('back')}</Button>
 				<Button className='next' onClick={changePage('/resume')}>
-					CONTINUE
+					{t('continue')}
 				</Button>
 			</div>
 		</div>

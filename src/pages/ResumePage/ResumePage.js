@@ -9,6 +9,7 @@ import { useReactToPrint } from 'react-to-print'
 import { useDispatch } from 'react-redux'
 import { resumeActions } from '../../store/user-info-slice'
 import { useNavigate } from 'react-router-dom'
+import {useTranslation} from 'react-i18next'
 
 
 
@@ -16,6 +17,7 @@ function ResumePage() {
 	const dispatch=useDispatch()
 	const changePage=useChangePage()
 	const navigate=useNavigate()
+	const {t}=useTranslation()
 	const componentRef=useRef(null)
 	const printResumeHandler=useReactToPrint({
 		content: ()=>componentRef.current,
@@ -29,41 +31,41 @@ function ResumePage() {
 		<div className='wrapper-resume'>
 			<div className='header-resume'>
 				<div className='title'>
-					<button className='title-name'>Your Resume</button>
+					<button className='title-name'>{t('resumeTitle')}</button>
 				</div>
 				<div className='btn-div'>
-					<button className='btn-download' onClick={printResumeHandler}>Download</button>
+					<button className='btn-download' onClick={printResumeHandler}>{t('download')}</button>
 				</div>
 			</div>
 			<div className='content-resume'>
 				<div className='wrapper-btn'>
-					<h4>Edit Sections</h4>
+					<h4>{t('editSections')}</h4>
 					<div className='add-btn btn-create' onClick={createNewResumeHandler}>
-						<p>Create NEW</p>
+						<p>{t('create')}</p>
 						<MdCreateNewFolder />
 					</div>
 					<div className='add-btn' onClick={changePage('/contact',true)}>
-						<p>Contats</p>
+						<p>{t('contact')}</p>
 						<FaPen />
 					</div>
 					<div className='add-btn' onClick={changePage('/summary')}>
-						<p>Summary</p>
+						<p>{t('Summary')}</p>
 						<FaPen />
 					</div>
 					<div className='add-btn' onClick={changePage('/skills')}>
-						<p>Skills</p>
+						<p>{t('Skills')}</p>
 						<FaPen />
 					</div>
 					<div className='add-btn' onClick={changePage('/experience')}>
-						<p>Experience</p>
+						<p>{t('experience')}</p>
 						<FaPen />
 					</div>
 					<div className='add-btn' onClick={changePage('/education')}>
-						<p>Education</p>
+						<p>{t('education')}</p>
 						<FaPen />
 					</div>
 					<div className='add-btn back-btn' onClick={changePage('/education')}>
-						<p>GO BACK</p>
+						<p>{t('back')}</p>
 						<IoArrowBack fontSize='30' />
 					</div>
 				</div>

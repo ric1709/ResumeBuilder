@@ -6,12 +6,15 @@ import useDebounce from '../../../hooks/useDebounce'
 import { resumeActions } from '../../../store/user-info-slice'
 import Button from '../../../UI/Button/Button'
 import './EditSkillsForm.css'
+import {useTranslation} from 'react-i18next'
+
 
 function EditSkillsForm() {
 	const dispatch = useDispatch()
 	const navigate=useNavigate()
 	const debouncedCallback = useDebounce(saveDataToStore, 800)
 	const changePage = useChangePage()
+	const {t}=useTranslation()
 	const { skills, id } = useSelector((state) => state.resume)
 	const skillItem = skills.find((el) => el.id === id)
 	const [skill, setSkill] = useState({
@@ -29,12 +32,12 @@ function EditSkillsForm() {
 	}
 	return (
 		<div className='skills-main-funnel'>
-			<h1 className='skills-h1'>Skills</h1>
+			<h1 className='skills-h1'>{t('skills')}</h1>
 			<div className='skills-edit-div'>
-				<p className='skills-p'>Highlight 6-8 of your top skills.</p>
+				<p className='skills-p'>{t('skillsH')}</p>
 			</div>
 			<div className='skills-input-div'>
-				<label>Add your skills</label>
+				<label>{t('addSkills')}</label>
 				<input
 					type='text'
 					className='skills-input'
@@ -52,9 +55,9 @@ function EditSkillsForm() {
 				/>
 			</div>
 			<div className='btn'>
-				<Button className='back' onClick={changePage('/skills',true)}>CANCEL</Button>
+				<Button className='back' onClick={changePage('/skills',true)}>{t('cancel')}</Button>
 				<Button className='next' onClick={saveSkillsToStoreHandler}>
-					SAVE
+					{t('save')}
 				</Button>
 			</div>
 		</div>

@@ -39,3 +39,10 @@
     justify-content: flex-end;
     margin-top: 20px;
 }
+.show-country{
+    margin-bottom: 5px;
+    /* width: 200px; */
+}
+.checkbox{
+    margin-left: 0;
+}

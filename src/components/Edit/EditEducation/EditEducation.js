@@ -6,10 +6,13 @@ import { RiPencilFill } from 'react-icons/ri'
 import { AiFillDelete } from 'react-icons/ai'
 import { resumeActions } from '../../../store/user-info-slice'
 import { useNavigate } from 'react-router-dom'
+import {useTranslation} from 'react-i18next'
+
 
 function EditEducation({ onCloseModal }) {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
+	const {t}=useTranslation()
 	const { extraEducation } = useSelector((state) => state.resume)
 
 	const removeEducation = (id) => {
@@ -28,13 +31,13 @@ function EditEducation({ onCloseModal }) {
 		<>
 			<div className='main-edit-div'>
 				<header className='edit-header'>
-					<h1>Edit Education</h1>
+					<h1>{t('editEdu')}</h1>
 				</header>
 				<main>
-					{extraEducation.map((edu) => (
+					{extraEducation.map((edu,i) => (
 						<div className='wrapper-edit-block' key={edu.id}>
 							<div className='wrapper-edit'>
-								<div className='circle'></div>
+								<div className='circle'>{i+1}</div>
 								<div className='wrapper-title'>
 									<p className='title'>
 										<b>{edu.school}</b>
@@ -65,10 +68,10 @@ function EditEducation({ onCloseModal }) {
 				</main>
 				<div className='edit-btn'>
 					<Button className='back' onClick={onCloseModal}>
-						CANCEL
+						{t('cancel')}
 					</Button>
 					<Button className='next' onClick={onCloseModal}>
-						SAVE
+						{t('save')}
 					</Button>
 				</div>
 			</div>

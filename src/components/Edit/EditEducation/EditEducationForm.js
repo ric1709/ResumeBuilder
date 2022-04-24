@@ -7,11 +7,14 @@ import { resumeActions } from '../../../store/user-info-slice';
 import Button from '../../../UI/Button/Button';
 import { DEGREES } from '../../../utils/constants/general';
 import './EditEducationForm.css'
+import {useTranslation} from 'react-i18next'
+
 
 function EditEducationForm() {
     const dispatch=useDispatch()
     const navigate=useNavigate()
     const changePage=useChangePage()
+	const {t}=useTranslation()
     const {extraEducation,id}=useSelector(state=>state.resume)
     const edu=extraEducation.find(edu=>edu.id === id)
     const education=useInput({
@@ -34,10 +37,10 @@ function EditEducationForm() {
     }
     return (
         <div className='main-funnel'>
-			<h1 className='h1'> Edit education</h1>
-			<p className='p'>Where did you go to school?</p>
+			<h1 className='h1'>{t('editEdu')}</h1>
+			<p className='p'>{t('eduP')}</p>
 			<div className='add-education-input-div'>
-				<label>School Name</label>
+				<label>{t('school')}</label>
 				<input
 					type='text'
 					className='add-education-input'
@@ -48,7 +51,7 @@ function EditEducationForm() {
 				/>
 			</div>
 			<div className='add-education-input-div'>
-				<label>City</label>
+				<label>{t('city')}</label>
 				<input
 					type='text'
 					className='add-education-input group'
@@ -59,7 +62,7 @@ function EditEducationForm() {
 			</div>
 			{showCountry && (
 				<div className='add-education-input-div'>
-					<label>Country</label>
+					<label>{t('country')}</label>
 					<input
 						type='text'
 						className='add-education-input'
@@ -72,11 +75,11 @@ function EditEducationForm() {
 			<div className='add-show-country'>
 				<input type='checkbox' onClick={showCountryHandler} />
 				<label>
-					<b>Show Country</b>
+					<b>{t('showC')}</b>
 				</label>
 			</div>
 			<div className='add-education-input-div select'>
-				<label>Degree</label>
+				<label>{t('degree')}</label>
 				<select
 					className='add-education-select'
 					name='degree'
@@ -84,7 +87,7 @@ function EditEducationForm() {
 					onChange={education.onChange}
 				>
 					<option value='' key='1'>
-						Select Your Degree
+						{t('select')}
 					</option>
 					<option value='High School Diploma' key='2'>
 						High School Diploma
@@ -97,7 +100,7 @@ function EditEducationForm() {
 				</select>
 			</div>
 			<div className='add-education-input-div'>
-				<label>Field of study</label>
+				<label>{t('field')}</label>
 				<input
 					type='text'
 					className='add-education-input'
@@ -108,7 +111,7 @@ function EditEducationForm() {
 			</div>
 			<div>
 				<div className='add-start-date'>
-					<label className='label'>Graduation Date</label>
+					<label className='label'>{t('graduation')}</label>
 					<input
 						type='date'
 						className='add-education-input date'
@@ -120,10 +123,10 @@ function EditEducationForm() {
 			</div>
 			<div className='btn'>
 				<Button className='back' onClick={changePage('/education',true)}>
-					CANCEL
+					{t('cancel')}
 				</Button>
 				<Button className='next' onClick={sendEditedEducationDataToStoreHandler}>
-					SAVE
+					{t('save')}
 				</Button>
 			</div>
 		</div>
