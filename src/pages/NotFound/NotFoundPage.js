@@ -1,9 +1,11 @@
 import React from 'react';
 import './NotFoundPage.css'
-import gsap from "gsap";
+import {AiOutlineHome} from 'react-icons/ai'
+import useChangePage from '../../hooks/useChangePage';
 
 
 function NotFoundPage() {
+	const changePage=useChangePage()
   return(
     <div>
         <div className="background">
@@ -14,6 +16,9 @@ function NotFoundPage() {
 		<div className="inner-content">
 			<h1 className="heading">404</h1>
 			<p className="subheading">Looks like the page you were looking for is no longer here.</p>
+			<div className='home-div'>
+			<button className='home-btn' onClick={changePage('/',true)}><AiOutlineHome/> <span>BACK TO HOME</span></button>
+			</div>
 		</div>
 	</div>
 	<div className="right-section">
