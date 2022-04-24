@@ -1,4 +1,4 @@
-import React, { useEffect, useState, } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import useChangePage from '../../hooks/useChangePage'
 import useDebounce from '../../hooks/useDebounce'
@@ -7,15 +7,18 @@ import { resumeActions } from '../../store/user-info-slice'
 import Button from '../../UI/Button/Button'
 import './ContactsForm.css'
 import InputMask from 'react-input-mask'
-import {useTranslation} from 'react-i18next'
-
+import { useTranslation } from 'react-i18next'
+import {  useParams } from 'react-router-dom'
 
 function ContactsForm() {
-	const { name, city, address, country, email, phone } = useSelector((state) => state.resume.contact)
+	const { name, city, address, country, email, phone } = useSelector(
+		(state) => state.resume.contact,
+	)
 	const dispatch = useDispatch()
 	const debouncedCallback = useDebounce(sendContantDataToStore, 800)
 	const changePage = useChangePage()
-	const {t , i18n}=useTranslation()
+	const { t, i18n } = useTranslation()
+	const { mode } = useParams()
 	const user = useInput({
 		name: name || '',
 		city: city || '',
@@ -25,7 +28,8 @@ function ContactsForm() {
 		phone: phone || '',
 	})
 	const [showCountry, setShowCountry] = useState(false)
-
+	const [resumeSave, setResumeSave] = useState(false)
+	console.log(resumeSave)
 	const showCountryHandler = () => {
 		setShowCountry((prevState) => !prevState)
 	}
@@ -37,9 +41,16 @@ function ContactsForm() {
 	useEffect(() => {
 		debouncedCallback()
 	}, [debouncedCallback])
+	useEffect(() => {
+		if (mode === ':edit') {
+			setResumeSave(true)
+		} else if (mode === ':create') {
+			setResumeSave(false)
+		}
+	}, [useParams])
 	return (
 		<div className='main-funnel'>
-			<h1 className='h1'>{t("contactIntro")}</h1>
+			<h1 className='h1'>{t('contactIntro')}</h1>
 			<p className='question'>{t('contatcIntroAsk')}</p>
 			<div className='contact-input-div'>
 				<label>{t('name')}</label>
@@ -88,7 +99,11 @@ function ContactsForm() {
 				</div>
 			)}
 			<div className='show-country'>
-				<input type='checkbox' className='show-country checkbox' onClick={showCountryHandler} />
+				<input
+					type='checkbox'
+					className='show-country checkbox'
+					onClick={showCountryHandler}
+				/>
 				<label>
 					<b>{t('showC')}</b>
 				</label>
@@ -116,9 +131,17 @@ function ContactsForm() {
 				/>
 			</div>
 			<div className='btn-contacts'>
-				<Button className='next' onClick={changePage('/summary')}>
-					{t('continue')}
-				</Button>
+				{!resumeSave && (
+					<Button className='next' onClick={changePage('/summary/:create')}>
+						{t('continue')}
+					</Button>
+				)}
+				{resumeSave && (
+					<Button className='next' onClick={changePage('/resume',true)}>
+						{t('save')}
+					</Button>
+				)}
+				
 			</div>
 		</div>
 	)

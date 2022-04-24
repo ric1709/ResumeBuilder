@@ -9,6 +9,7 @@ import Button from '../../UI/Button/Button'
 import { DEGREES } from '../../utils/constants/general'
 import EditEducation from '../Edit/EditEducation/EditEducation'
 import './EducationForm.css'
+import { useParams } from 'react-router-dom'
 import {useTranslation} from 'react-i18next'
 
 
@@ -16,6 +17,7 @@ function EducationForm({editModal}) {
 	const dispatch = useDispatch()
 	const changePage = useChangePage()
 	const {t}=useTranslation()
+	const {mode}=useParams()
 	const debouncedCallback = useDebounce(sendEducationDataToStore, 800)
 	const { education, extraEducation } = useSelector((state) => state.resume)
 	const { school, city, country, degree, fieldOfStudy, date } = education
@@ -32,6 +34,7 @@ function EducationForm({editModal}) {
 	const [showCountry, setShowCountry] = useState(false)
 	const [showEdit, setShowEdit] = useState(false)
 	const [showEditModal,setShowEditModal]=useState(false)
+	const [saveResume,setSaveResume]=useState(false)
 
 	const showCountryHandler = () => {
 		setShowCountry((prevState) => !prevState)
@@ -53,7 +56,13 @@ function EducationForm({editModal}) {
 			setShowEdit(false)
 		}
 	}, [extraEducation])
-
+	useEffect(() => {
+		if(mode === ':edit'){
+			setSaveResume(true)
+		}else if(mode === ':create'){
+			setSaveResume(false)
+		}
+	}, [useParams]);
 	return (
 		<div className='main-funnel'>
 			<h1 className='h1'>{t('edu')}</h1>
@@ -159,10 +168,14 @@ function EducationForm({editModal}) {
 				</button>
 			</div>
 			<div className='btn'>
-				<Button className='back' onClick={changePage('/experience')}>{t('back')}</Button>
-				<Button className='next' onClick={changePage('/resume')}>
+				{!saveResume && <Button className='back' onClick={changePage('/experience/:create')}>{t('back')}</Button>}
+				{!saveResume && <Button className='next' onClick={changePage('/resume')}>
 					{t('continue')}
-				</Button>
+				</Button>}
+				{saveResume && <Button className='back' onClick={changePage('/resume',true)}>{t('back')}</Button>}
+				{saveResume && <Button className='next' onClick={changePage('/resume',true)}>
+					{t('continue')}
+				</Button>}
 			</div>
 		</div>
 	)

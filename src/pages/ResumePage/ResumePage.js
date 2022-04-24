@@ -9,23 +9,24 @@ import { useReactToPrint } from 'react-to-print'
 import { useDispatch } from 'react-redux'
 import { resumeActions } from '../../store/user-info-slice'
 import { useNavigate } from 'react-router-dom'
-import {useTranslation} from 'react-i18next'
-
-
+import { useTranslation } from 'react-i18next'
 
 function ResumePage() {
-	const dispatch=useDispatch()
-	const changePage=useChangePage()
-	const navigate=useNavigate()
-	const {t}=useTranslation()
-	const componentRef=useRef(null)
-	const printResumeHandler=useReactToPrint({
-		content: ()=>componentRef.current,
+	const dispatch = useDispatch()
+	const changePage = useChangePage()
+	const navigate = useNavigate()
+	const { t } = useTranslation()
+
+	const componentRef = useRef(null)
+	
+	const printResumeHandler = useReactToPrint({
+		content: () => componentRef.current,
 	})
-	const createNewResumeHandler=()=>{
+
+	const createNewResumeHandler = () => {
 		dispatch(resumeActions.newResume())
-		navigate('/contact')
-		localStorage.clear('@resume-data')
+		navigate('/contact/:create')
+		localStorage.clear('@resume-data')``
 	}
 	return (
 		<div className='wrapper-resume'>
@@ -34,42 +35,56 @@ function ResumePage() {
 					<button className='title-name'>{t('resumeTitle')}</button>
 				</div>
 				<div className='btn-div'>
-					<button className='btn-download' onClick={printResumeHandler}>{t('download')}</button>
+					<button
+						className='btn-download'
+						onClick={printResumeHandler}
+					>
+						{t('download')}
+					</button>
 				</div>
 			</div>
 			<div className='content-resume'>
 				<div className='wrapper-btn'>
 					<h4>{t('editSections')}</h4>
-					<div className='add-btn btn-create' onClick={createNewResumeHandler}>
+					<div
+						className='add-btn btn-create'
+						onClick={createNewResumeHandler}
+					>
 						<p>{t('create')}</p>
 						<MdCreateNewFolder />
 					</div>
-					<div className='add-btn' onClick={changePage('/contact',true)}>
+					<div
+						className='add-btn'
+						onClick={changePage('/contact/:edit', true)}
+					>
 						<p>{t('contact')}</p>
 						<FaPen />
 					</div>
-					<div className='add-btn' onClick={changePage('/summary')}>
+					<div className='add-btn' onClick={changePage('/summary/:edit',true)}>
 						<p>{t('Summary')}</p>
 						<FaPen />
 					</div>
-					<div className='add-btn' onClick={changePage('/skills')}>
+					<div className='add-btn' onClick={changePage('/skills/:edit',true)}>
 						<p>{t('Skills')}</p>
 						<FaPen />
 					</div>
-					<div className='add-btn' onClick={changePage('/experience')}>
+					<div
+						className='add-btn'
+						onClick={changePage('/experience/:edit',true)}
+					>
 						<p>{t('experience')}</p>
 						<FaPen />
 					</div>
-					<div className='add-btn' onClick={changePage('/education')}>
+					<div className='add-btn' onClick={changePage('/education/:edit',true)}>
 						<p>{t('education')}</p>
 						<FaPen />
 					</div>
-					<div className='add-btn back-btn' onClick={changePage('/education')}>
+					<div className='add-btn back-btn' onClick={changePage('/education/:create')}>
 						<p>{t('back')}</p>
 						<IoArrowBack fontSize='30' />
 					</div>
 				</div>
-				<ResumePreview componentRef={componentRef}/>
+				<ResumePreview componentRef={componentRef} />
 			</div>
 		</div>
 	)
