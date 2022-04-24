@@ -5,11 +5,14 @@ import useChangePage from '../../../hooks/useChangePage';
 import useInput from '../../../hooks/useInput';
 import { resumeActions } from '../../../store/user-info-slice';
 import Button from '../../../UI/Button/Button';
+import {useTranslation} from 'react-i18next'
+
 
 function EditExperienceForm() {
     const dispatch=useDispatch()
     const navigate=useNavigate()
     const changePage=useChangePage()
+	const {t}=useTranslation()
     const { extraExperience ,id} = useSelector((state) => state.resume)
     const experience=extraExperience.find(el=>el.id === id)
     const { title, employer, city, country, startDate, endDate }=experience
@@ -29,18 +32,18 @@ function EditExperienceForm() {
 	}
     const sendEditedExperienceDataToStoreHandler=()=>{
         dispatch(resumeActions.editExperience(value))
-        navigate('/experience')
+        navigate('/experience',{replace:true})
     }
     return (
         <div className='main-funnel'>
-        <h1 className='h1'> Edit Work Experience</h1>
+        <h1 className='h1'>{t('editWE')}</h1>
         <div className='edit-div'>
             <p className='p'>
-                Start with your most recent work experience.
+                {t('expP')}
             </p>
         </div>
         <div className='experience-input-div'>
-            <label>Job Title</label>
+            <label>{t('title')}</label>
             <input
                 type='text'
                 className='experience-input'
@@ -51,7 +54,7 @@ function EditExperienceForm() {
             />
         </div>
         <div className='experience-input-div'>
-            <label>Employer</label>
+            <label>{t('emp')}</label>
             <input
                 type='text'
                 className='experience-input'
@@ -61,7 +64,7 @@ function EditExperienceForm() {
             />
         </div>
         <div className='experience-input-div'>
-            <label>City</label>
+            <label>{t('city')}</label>
             <input
                 type='text'
                 className='experience-input group'
@@ -72,7 +75,7 @@ function EditExperienceForm() {
         </div>
         {showCountry && (
             <div className='experience-input-div'>
-                <label>Country</label>
+                <label>{t('country')}</label>
                 <input
                     type='text'
                     className='experience-input'
@@ -85,12 +88,12 @@ function EditExperienceForm() {
         <div className='show-country'>
             <input type='checkbox' onClick={showCountryHandler} />
             <label>
-                <b>Show Country</b>
+                <b>{t('showC')}</b>
             </label>
         </div>
         <div>
             <div className='end-date'>
-                <label>Start Date</label>
+                <label>{t('sDate')}</label>
                 <input
                     type='date'
                     className='experience-input date'
@@ -100,7 +103,7 @@ function EditExperienceForm() {
                 />
             </div>
             <div className='end-date'>
-                <label>End Date</label>
+                <label>{t('eDate')}</label>
                 <input
                     type='date'
                     className='experience-input date'
@@ -110,18 +113,10 @@ function EditExperienceForm() {
                 />
             </div>
         </div>
-        <div className='additional-btn-div'>
-            <button
-                className='add-btn'
-                onClick={changePage('/add-experience')}
-            >
-                +ADD ANOTHER EXPERIENCE
-            </button>
-        </div>
         <div className='btn'>
-            <Button className='back' onClick={changePage('/experience')}>CANCEL</Button>
+            <Button className='back' onClick={changePage('/experience',true)}>{t('cancel')}</Button>
             <Button className='next' onClick={sendEditedExperienceDataToStoreHandler}>
-                SAVE
+                {t('save')}
             </Button>
         </div>
     </div>

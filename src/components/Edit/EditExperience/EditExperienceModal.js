@@ -6,11 +6,14 @@ import { RiPencilFill } from 'react-icons/ri'
 import { AiFillDelete } from 'react-icons/ai'
 import { resumeActions } from '../../../store/user-info-slice'
 import { useNavigate } from 'react-router-dom'
+import {useTranslation} from 'react-i18next'
+
 
 function EditExperienceModal({ onCloseModal }) {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 	const { extraExperience } = useSelector((state) => state.resume)
+	const {t}=useTranslation()
 
 	const removeEducation = (id) => {
 		dispatch(resumeActions.removeExtraExperience(id))
@@ -28,13 +31,13 @@ function EditExperienceModal({ onCloseModal }) {
 		<>
 			<div className='main-edit-div'>
 				<header className='edit-header'>
-					<h1>Edit Experience</h1>
+					<h1>{t('editExp')}</h1>
 				</header>
 				<main>
-					{extraExperience.map((el) => (
+					{extraExperience.map((el,i) => (
 						<div className='wrapper-edit-block' key={el.id}>
 							<div className='wrapper-edit'>
-								<div className='circle'></div>
+								<div className='circle'>{i+1}</div>
 								<div className='wrapper-title'>
 									<p className='title'>
 										<b>{el.title}</b>
@@ -65,10 +68,10 @@ function EditExperienceModal({ onCloseModal }) {
 				</main>
 				<div className='edit-btn'>
 					<Button className='back' onClick={onCloseModal}>
-						CANCEL
+						{t('cancel')}
 					</Button>
 					<Button className='next' onClick={onCloseModal}>
-						SAVE
+						{t('save')}
 					</Button>
 				</div>
 			</div>

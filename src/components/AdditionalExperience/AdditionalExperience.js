@@ -7,11 +7,15 @@ import useInput from '../../hooks/useInput';
 import { resumeActions } from '../../store/user-info-slice';
 import Button from '../../UI/Button/Button';
 import './AdditionalExperience.css'
+import {useTranslation} from 'react-i18next'
+
 
 function AdditionalExperience() {
     const dispatch=useDispatch()
     const navigate=useNavigate()
+	const changePage=useChangePage()
     const debouncedCallback=useDebounce(onSaveExperienceDataToStore,1000)
+	const {t}=useTranslation()
     const [showCountry,setShowCountry]=useState(false)
     const experience=useInput({
         title: '',
@@ -30,14 +34,14 @@ function AdditionalExperience() {
     }
     const onSaveExperienceDataToStoreHandler=()=>{
         debouncedCallback()
-        navigate('/experience')
+        navigate('/experience',{replace:true})
     }
     return (
         <div className='main-funnel'>
-			<h1 className='h1'>Work Experience</h1>
-			<p className='p'>Start with your most recent work experience.</p>
+			<h1 className='h1'>{t('exp')}</h1>
+			<p className='p'>{t('expP')}</p>
 			<div className='add-experience-input-div'>
-				<label>Job Title</label>
+				<label>{t('title')}</label>
 				<input
 					type='text'
 					className='add-experience-input'
@@ -48,7 +52,7 @@ function AdditionalExperience() {
 				/>
 			</div>
 			<div className='add-experience-input-div'>
-				<label>Employer</label>
+				<label>{t('emp')}</label>
 				<input
 					type='text'
 					className='add-experience-input'
@@ -58,7 +62,7 @@ function AdditionalExperience() {
 				/>
 			</div>
 			<div className='add-experience-input-div'>
-				<label>City</label>
+				<label>{t('city')}</label>
 				<input
 					type='text'
 					className='add-experience-input group'
@@ -69,7 +73,7 @@ function AdditionalExperience() {
 			</div>
 			{showCountry && (
 				<div className='add-experience-input-div'>
-					<label>Country</label>
+					<label>{t('country')}</label>
 					<input
 						type='text'
 						className='add-experience-input'
@@ -82,12 +86,12 @@ function AdditionalExperience() {
 			<div className='add-show-country'>
 				<input type='checkbox' onClick={showCountryHandler} />
 				<label>
-					<b>Show Country</b>
+					<b>{t('showC')}</b>
 				</label>
 			</div>
 			<div>
 				<div className='add-end-date'>
-					<label>Start Date</label>
+					<label>{t('sDate')}</label>
 					<input
 						type='date'
 						className='add-experience-input date'
@@ -97,7 +101,7 @@ function AdditionalExperience() {
 					/>
 				</div>
 				<div className='add-end-date'>
-					<label>End Date</label>
+					<label>{t('eDate')}</label>
 					<input
 						type='date'
 						className='add-experience-input date'
@@ -108,9 +112,9 @@ function AdditionalExperience() {
 				</div>
 			</div>
 			<div className='btn'>
-				<Button className='back'>CENCEL</Button>
+				<Button className='back' onClick={changePage('/experience',true)}>{t('cancel')}</Button>
 				<Button className='next' onClick={onSaveExperienceDataToStoreHandler}>
-					SAVE
+					{t('save')}
 				</Button>
 			</div>
 		</div>

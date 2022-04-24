@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import useChangePage from '../../hooks/useChangePage'
 import useDebounce from '../../hooks/useDebounce'
@@ -7,15 +7,15 @@ import { resumeActions } from '../../store/user-info-slice'
 import Button from '../../UI/Button/Button'
 import './ContactsForm.css'
 import InputMask from 'react-input-mask'
+import {useTranslation} from 'react-i18next'
 
 
 function ContactsForm() {
-	const { name, city, address, country, email, phone } = useSelector(
-		(state) => state.resume.contact,
-	)
+	const { name, city, address, country, email, phone } = useSelector((state) => state.resume.contact)
 	const dispatch = useDispatch()
 	const debouncedCallback = useDebounce(sendContantDataToStore, 800)
 	const changePage = useChangePage()
+	const {t , i18n}=useTranslation()
 	const user = useInput({
 		name: name || '',
 		city: city || '',
@@ -29,24 +29,20 @@ function ContactsForm() {
 	const showCountryHandler = () => {
 		setShowCountry((prevState) => !prevState)
 	}
-
 	const { value } = user
+
 	function sendContantDataToStore() {
 		return dispatch(resumeActions.contacts(value))
 	}
-
 	useEffect(() => {
 		debouncedCallback()
 	}, [debouncedCallback])
-
 	return (
 		<div className='main-funnel'>
-			<h1 className='h1'>Let's complete your Resume Heading</h1>
-			<p className='question'>
-				How do you want employers to contact you?
-			</p>
+			<h1 className='h1'>{t("contactIntro")}</h1>
+			<p className='question'>{t('contatcIntroAsk')}</p>
 			<div className='contact-input-div'>
-				<label>Name</label>
+				<label>{t('name')}</label>
 				<input
 					type='text'
 					className='contact-input'
@@ -57,9 +53,10 @@ function ContactsForm() {
 				/>
 			</div>
 			<div className='contact-input-div'>
-				<label>Address</label>
+				<label>{t('address')}</label>
 				<input
 					type='text'
+					maxLength='20'
 					className='contact-input'
 					name='address'
 					value={user.value.address}
@@ -67,9 +64,10 @@ function ContactsForm() {
 				/>
 			</div>
 			<div className='contact-input-div'>
-				<label>City</label>
+				<label>{t('city')}</label>
 				<input
 					type='text'
+					maxLength='15'
 					className='contact-input group'
 					name='city'
 					value={user.value.city}
@@ -78,9 +76,10 @@ function ContactsForm() {
 			</div>
 			{showCountry && (
 				<div className='contact-input-div'>
-					<label>Country</label>
+					<label>{t('country')}</label>
 					<input
 						type='text'
+						maxLength='15'
 						className='contact-input'
 						name='country'
 						value={user.value.country}
@@ -89,15 +88,16 @@ function ContactsForm() {
 				</div>
 			)}
 			<div className='show-country'>
-				<input type='checkbox' onClick={showCountryHandler} />
+				<input type='checkbox' className='show-country checkbox' onClick={showCountryHandler} />
 				<label>
-					<b>Show Country</b>
+					<b>{t('showC')}</b>
 				</label>
 			</div>
 			<div className='contact-input-div'>
-				<label>Email</label>
+				<label>{t('email')}</label>
 				<input
-					type='text'
+					type='email'
+					maxLength='30'
 					className='contact-input'
 					name='email'
 					value={user.value.email}
@@ -105,7 +105,7 @@ function ContactsForm() {
 				/>
 			</div>
 			<div className='contact-input-div'>
-				<label>Phone</label>
+				<label>{t('phone')}</label>
 				<InputMask
 					type='text'
 					className='contact-input'
@@ -115,10 +115,9 @@ function ContactsForm() {
 					onChange={user.onChange}
 				/>
 			</div>
-			<div className='btn'>
-				<Button className='back'>BACK</Button>
-				<Button className='next' onClick={changePage('/education')}>
-					CONTINUE
+			<div className='btn-contacts'>
+				<Button className='next' onClick={changePage('/summary')}>
+					{t('continue')}
 				</Button>
 			</div>
 		</div>

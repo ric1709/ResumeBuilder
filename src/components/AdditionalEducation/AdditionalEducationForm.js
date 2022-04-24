@@ -8,12 +8,15 @@ import { resumeActions } from '../../store/user-info-slice'
 import Button from '../../UI/Button/Button'
 import { DEGREES } from '../../utils/constants/general'
 import './AdditionalEducationForm.css'
+import {useTranslation} from 'react-i18next'
+
 
 function AdditionalEducationForm() {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 	const debouncedCallback = useDebounce(onSaveDataToStore, 800)
 	const changePage = useChangePage()
+	const {t}=useTranslation()
 	const [showCountry, setShowCountry] = useState(false)
 	const edu = useInput({
 		school:'',
@@ -30,28 +33,28 @@ function AdditionalEducationForm() {
 	}
 	const onSaveDataToStoreHandler = () => {
 		debouncedCallback()
-		navigate('/education')
+		navigate('/education',{replace:true})
 	}
 	const showCountryHandler = () => {
 		setShowCountry((prevState) => !prevState)
 	}
 	return (
 		<div className='main-funnel'>
-			<h1 className='h1'>Education</h1>
-			<p className='p'>Where did you go to school?</p>
+			<h1 className='h1'>{t('edu')}</h1>
+			<p className='p'>{t('eduP')}</p>
 			<div className='add-education-input-div'>
-				<label>School Name</label>
+				<label>{t('school')}</label>
 				<input
 					type='text'
 					className='add-education-input'
-					maxLength='15'
+					maxLength='35'
 					name='school'
 					value={edu.value.school}
 					onChange={edu.onChange}
 				/>
 			</div>
 			<div className='add-education-input-div'>
-				<label>City</label>
+				<label>{t('city')}</label>
 				<input
 					type='text'
 					className='add-education-input group'
@@ -62,7 +65,7 @@ function AdditionalEducationForm() {
 			</div>
 			{showCountry && (
 				<div className='add-education-input-div'>
-					<label>Country</label>
+					<label>{t('country')}</label>
 					<input
 						type='text'
 						className='add-education-input'
@@ -75,11 +78,11 @@ function AdditionalEducationForm() {
 			<div className='add-show-country'>
 				<input type='checkbox' onClick={showCountryHandler} />
 				<label>
-					<b>Show Country</b>
+					<b>{t('showC')}</b>
 				</label>
 			</div>
 			<div className='add-education-input-div select'>
-				<label>Degree</label>
+				<label>{t('degree')}</label>
 				<select
 					className='add-education-select'
 					name='degree'
@@ -87,7 +90,7 @@ function AdditionalEducationForm() {
 					onChange={edu.onChange}
 				>
 					<option value='' key='1'>
-						Select Your Degree
+						{t('select')}
 					</option>
 					<option value='High School Diploma' key='2'>
 						High School Diploma
@@ -100,7 +103,7 @@ function AdditionalEducationForm() {
 				</select>
 			</div>
 			<div className='add-education-input-div'>
-				<label>Field of study</label>
+				<label>{t('field')}</label>
 				<input
 					type='text'
 					className='add-education-input'
@@ -111,7 +114,7 @@ function AdditionalEducationForm() {
 			</div>
 			<div>
 				<div className='add-start-date'>
-					<label className='label'>Graduation Date</label>
+					<label className='label'>{t('graduate')}</label>
 					<input
 						type='date'
 						className='add-education-input date'
@@ -122,11 +125,11 @@ function AdditionalEducationForm() {
 				</div>
 			</div>
 			<div className='btn'>
-				<Button className='back' onClick={changePage('/education')}>
-					CENCEL
+				<Button className='back' onClick={changePage('/education',true)}>
+					{t('cancel')}
 				</Button>
 				<Button className='next' onClick={onSaveDataToStoreHandler}>
-					SAVE
+					{t('save')}
 				</Button>
 			</div>
 		</div>

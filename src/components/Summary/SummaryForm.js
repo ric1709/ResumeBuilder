@@ -6,9 +6,11 @@ import useInput from '../../hooks/useInput'
 import { resumeActions } from '../../store/user-info-slice'
 import Button from '../../UI/Button/Button'
 import './SummaryForm.css'
+import {useTranslation} from 'react-i18next'
 
 function SummaryForm() {
 	const dispatch = useDispatch()
+	const {t}=useTranslation()
 	const debouncedCallback = useDebounce(saveDataToStore, 800)
 	const changePage=useChangePage()
 	const {summary}=useSelector(state=>state.resume.summary)
@@ -24,23 +26,22 @@ function SummaryForm() {
 
 	return (
 		<div className='summary-main-funnel'>
-			<h1 className='summary-h1'>Profssional Summary</h1>
-			<p className='summary-p'>Finish your resume with short summary</p>
+			<h1 className='summary-h1'>{t('summary')}</h1>
+			<p className='summary-p'>{t('summaryP')}</p>
 			<div className='summary-div'>
 				<textarea
-					cols='4'
-					rows='10'
+					placeholder='Write your professional summary shortly...'
 					className='summary-text'
 					name='summary'
-					maxLength={150}
+					maxLength='370'
 					value={summaryInfo.value.summary}
 					onChange={summaryInfo.onChange}
 				></textarea>
 			</div>
 			<div className='btn-summary'>
-				<Button className='back'>BACK</Button>
-				<Button className='next' onClick={changePage('/resume')}>
-					CONTINUE
+				<Button className='back' onClick={changePage('/contact')}>{t('back')}</Button>
+				<Button className='next' onClick={changePage('/skills')}>
+					{t('continue')}
 				</Button>
 			</div>
 		</div>

@@ -8,11 +8,13 @@ import { resumeActions } from '../../store/user-info-slice'
 import Button from '../../UI/Button/Button'
 import EditExperienceModal from '../Edit/EditExperience/EditExperienceModal'
 import './ExperienceForm.css'
+import {useTranslation} from 'react-i18next'
 
 function ExperienceForm({editModal}) {
 	const changePage = useChangePage()
 	const dispatch = useDispatch()
 	const debouncedCallback = useDebounce(sendExperienceDataToStore, 800)
+	const {t}=useTranslation()
 	const { experience, extraExperience } = useSelector((state) => state.resume)
 	const { title, employer, city, country, startDate, endDate } = experience
 	const { value, onChange } = useInput({
@@ -53,43 +55,45 @@ function ExperienceForm({editModal}) {
 	return (
 		<>
 			<div className='main-funnel'>
-				<h1 className='h1'>Work Experience</h1>
+				<h1 className='h1'>{t('exp')}</h1>
 				<div className='edit-div'>
 					<p className='p'>
-						Start with your most recent work experience.
+						{t('expP')}
 					</p>
 					{showEdit && (
 						<button className='edit-button' onClick={callEditModal}>
-							<b>EDIT</b>
+							<b>{t('edit')}</b>
 						</button>
 					)}
 				</div>
 				<div className='experience-input-div'>
-					<label>Job Title</label>
+					<label>{t('title')}</label>
 					<input
 						type='text'
 						className='experience-input'
-						maxLength='25'
+						maxLength='45'
 						name='title'
 						value={value.title}
 						onChange={onChange}
 					/>
 				</div>
 				<div className='experience-input-div'>
-					<label>Employer</label>
+					<label>{t('emp')}</label>
 					<input
 						type='text'
 						className='experience-input'
+						maxLength='45'
 						name='employer'
 						value={value.employer}
 						onChange={onChange}
 					/>
 				</div>
 				<div className='experience-input-div'>
-					<label>City</label>
+					<label>{t('city')}</label>
 					<input
 						type='text'
 						className='experience-input group'
+						maxLength='25'
 						name='city'
 						value={value.city}
 						onChange={onChange}
@@ -97,10 +101,11 @@ function ExperienceForm({editModal}) {
 				</div>
 				{showCountry && (
 					<div className='experience-input-div'>
-						<label>Country</label>
+						<label>{t('country')}</label>
 						<input
 							type='text'
 							className='experience-input'
+							maxLength='25'
 							name='country'
 							value={value.country}
 							onChange={onChange}
@@ -110,12 +115,12 @@ function ExperienceForm({editModal}) {
 				<div className='show-country'>
 					<input type='checkbox' onClick={showCountryHandler} />
 					<label>
-						<b>Show Country</b>
+						<b>{t('showC')}</b>
 					</label>
 				</div>
 				<div>
 					<div className='end-date'>
-						<label>Start Date</label>
+						<label>{t('sDate')}</label>
 						<input
 							type='date'
 							className='experience-input date'
@@ -125,7 +130,7 @@ function ExperienceForm({editModal}) {
 						/>
 					</div>
 					<div className='end-date'>
-						<label>End Date</label>
+						<label>{t('eDate')}</label>
 						<input
 							type='date'
 							className='experience-input date'
@@ -140,13 +145,13 @@ function ExperienceForm({editModal}) {
 						className='add-btn'
 						onClick={changePage('/add-experience')}
 					>
-						+ADD ANOTHER EXPERIENCE
+						{t('addAE')}
 					</button>
 				</div>
 				<div className='btn'>
-					<Button className='back'>BACK</Button>
-					<Button className='next' onClick={changePage('/skills')}>
-						CONTINUE
+					<Button className='back' onClick={changePage('/skills')}>{t('back')}</Button>
+					<Button className='next' onClick={changePage('/education')}>
+						{t('continue')}
 					</Button>
 				</div>
 			</div>
