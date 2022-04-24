@@ -22,16 +22,16 @@ function AppRoutes() {
 			<Routes>
 				<Route path='/' element={<Navigate to ={'/resume'}/>} />
 				<Route path='/' element={<Layout />}>
-					<Route path='contact' element={<ContactPage />} />
-					<Route path='experience' element={<ExperiencePage />} />
+					<Route path='contact/:mode' element={<ContactPage />} />
+					<Route path='experience/:mode' element={<ExperiencePage />} />
 					<Route path='add-experience' element={<AdditionalExperiencePage />} />
 					<Route path='edit-experience' element={<EditExperiencePage />} />
-					<Route path='education' element={<EducationPage />} />
+					<Route path='education/:mode' element={<EducationPage />} />
 					<Route path='addEdu' element={<AdditionalEducationPage />} />
 					<Route path='eduction-edit' element={<EditEducationPage/>} />
-					<Route path='skills' element={<SkillsPage />} />
+					<Route path='skills/:mode' element={<SkillsPage />} />
 					<Route path='edit-skills' element={<EditSkillsPage/>} />
-					<Route path='summary' element={<SummaryPage />} />
+					<Route path='summary/:mode' element={<SummaryPage />} />
 					<Route path='resume' element={<ResumePage />} />
 				</Route>
 				<Route path='*' element={<NotFoundPage/>}/>
