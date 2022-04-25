@@ -17,7 +17,7 @@ function ContactsForm() {
 	const dispatch = useDispatch()
 	const debouncedCallback = useDebounce(sendContantDataToStore, 800)
 	const changePage = useChangePage()
-	const { t, i18n } = useTranslation()
+	const { t} = useTranslation()
 	const { mode } = useParams()
 	const user = useInput({
 		name: name || '',
@@ -90,7 +90,7 @@ function ContactsForm() {
 					<label>{t('country')}</label>
 					<input
 						type='text'
-						maxLength='15'
+						maxLength='25'
 						className='contact-input'
 						name='country'
 						value={user.value.country}
