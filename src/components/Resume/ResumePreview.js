@@ -45,7 +45,7 @@ function ResumePreview({componentRef}) {
 				<h2>{contact.name || t('info')}</h2>
 				<p><MdOutlinePhoneEnabled/><span>{contact.phone }</span></p>
 				<p><IoIosMail/><span>{contact.email }</span></p>
-				<p><FaAddressCard/><span>{contact.address}, {contact.city} , {contact.country}</span></p>
+				<p><FaAddressCard/>{contact.address && <span>{contact.address}, {contact.city} , {contact.country}</span>}</p>
 				<div className='block-skills'><FaListUl/><span>{t('Skills')}</span></div>
 				{skills.map(el=>(
 					<p key={el.id}><BsCheckLg/> <span>{el.skill}</span></p>
@@ -60,8 +60,8 @@ function ResumePreview({componentRef}) {
 					<h3>{t('experience')}</h3>
 					<h4>{experience.title}</h4>
 					<h4>{experience.employer}</h4>
-					<h4>{experience.city } , {experience.country}</h4>
-					<h4>{experience.startDate}<AiOutlineArrowRight/> {experience.endDate}</h4>
+					{experience.city && <h4>{experience.city } , {experience.country}</h4>}
+					{experience.startDate && <h4>{experience.startDate} <AiOutlineArrowRight/> {experience.endDate}</h4>}
 				</div>
 				{extraExperience.map(experience=>(
 					<div className='poragraph' key={experience.id}>
@@ -74,9 +74,9 @@ function ResumePreview({componentRef}) {
 				))}
 				<div className='poragraph'>
 					<h3>{t('education')}</h3>
-					<h4>{education.degree} : {education.fieldOfStudy}</h4>
+					{education.degree && <h4>{education.degree} : {education.fieldOfStudy}</h4>}
 					<h4>{education.school}</h4>
-					<h4>{education.city} , {education.country}</h4>
+					{education.city && <h4>{education.city} , {education.country}</h4>}
 					<h4>{education.date}</h4>
 				</div>
 				{extraEducation.map(education=>(
