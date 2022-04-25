@@ -61,7 +61,7 @@
 	font-family: 'Lato', sans-serif;
 	font-size: 25px;
 }
-.add-btn {
+.add-btn-r {
 	width: 250px;
 	height: 40px;
 	background: #fff;
@@ -74,11 +74,11 @@
 	border: 2px solid #00c293;
 	cursor: pointer;
 }
-.add-btn:hover {
+.add-btn-r:hover {
 	transition: ease-in-out 0.4s;
 	background-color: #00c293;
 }
-.add-btn button {
+.add-btn-r button {
 	border: 2px solid #012a35;
 	background: none;
 	width: 35px;

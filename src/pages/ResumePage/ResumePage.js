@@ -26,7 +26,7 @@ function ResumePage() {
 	const createNewResumeHandler = () => {
 		dispatch(resumeActions.newResume())
 		navigate('/contact/:create')
-		localStorage.clear('@resume-data')``
+		localStorage.clear('@resume-data')
 	}
 	return (
 		<div className='wrapper-resume'>
@@ -47,39 +47,39 @@ function ResumePage() {
 				<div className='wrapper-btn'>
 					<h4>{t('editSections')}</h4>
 					<div
-						className='add-btn btn-create'
+						className='add-btn-r btn-create'
 						onClick={createNewResumeHandler}
 					>
 						<p>{t('create')}</p>
 						<MdCreateNewFolder />
 					</div>
 					<div
-						className='add-btn'
+						className='add-btn-r'
 						onClick={changePage('/contact/:edit', true)}
 					>
 						<p>{t('contact')}</p>
 						<FaPen />
 					</div>
-					<div className='add-btn' onClick={changePage('/summary/:edit',true)}>
+					<div className='add-btn-r' onClick={changePage('/summary/:edit',true)}>
 						<p>{t('Summary')}</p>
 						<FaPen />
 					</div>
-					<div className='add-btn' onClick={changePage('/skills/:edit',true)}>
+					<div className='add-btn-r' onClick={changePage('/skills/:edit',true)}>
 						<p>{t('Skills')}</p>
 						<FaPen />
 					</div>
 					<div
-						className='add-btn'
+						className='add-btn-r'
 						onClick={changePage('/experience/:edit',true)}
 					>
 						<p>{t('experience')}</p>
 						<FaPen />
 					</div>
-					<div className='add-btn' onClick={changePage('/education/:edit',true)}>
+					<div className='add-btn-r' onClick={changePage('/education/:edit',true)}>
 						<p>{t('education')}</p>
 						<FaPen />
 					</div>
-					<div className='add-btn back-btn' onClick={changePage('/education/:create')}>
+					<div className='add-btn-r back-btn' onClick={changePage('/education/:create')}>
 						<p>{t('back')}</p>
 						<IoArrowBack fontSize='30' />
 					</div>
