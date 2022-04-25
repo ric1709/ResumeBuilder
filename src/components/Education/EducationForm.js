@@ -172,9 +172,9 @@ function EducationForm({editModal}) {
 				{!saveResume && <Button className='next' onClick={changePage('/resume')}>
 					{t('continue')}
 				</Button>}
-				{saveResume && <Button className='back' onClick={changePage('/resume',true)}>{t('back')}</Button>}
+				{saveResume && <Button className='back' onClick={changePage('/resume',true)}>{t('cencel')}</Button>}
 				{saveResume && <Button className='next' onClick={changePage('/resume',true)}>
-					{t('continue')}
+					{t('save')}
 				</Button>}
 			</div>
 		</div>
