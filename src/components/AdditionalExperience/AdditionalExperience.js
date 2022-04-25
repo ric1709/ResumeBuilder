@@ -34,7 +34,7 @@ function AdditionalExperience() {
     }
     const onSaveExperienceDataToStoreHandler=()=>{
         debouncedCallback()
-        navigate('/experience',{replace:true})
+        navigate('/experience/:create',{replace:true})
     }
     return (
         <div className='main-funnel'>
@@ -112,7 +112,7 @@ function AdditionalExperience() {
 				</div>
 			</div>
 			<div className='btn'>
-				<Button className='back' onClick={changePage('/experience',true)}>{t('cancel')}</Button>
+				<Button className='back' onClick={changePage('/experience/:create',true)}>{t('cancel')}</Button>
 				<Button className='next' onClick={onSaveExperienceDataToStoreHandler}>
 					{t('save')}
 				</Button>

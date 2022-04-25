@@ -64,7 +64,7 @@ function SkillsForm({ editModal }) {
 				<input
 					type='text'
 					className='skills-input'
-					maxLength='30'
+					maxLength='22'
 					placeholder='Eg:Calculating'
 					name='skill'
 					value={skill}

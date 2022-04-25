@@ -32,7 +32,7 @@ function EditExperienceForm() {
 	}
     const sendEditedExperienceDataToStoreHandler=()=>{
         dispatch(resumeActions.editExperience(value))
-        navigate('/experience',{replace:true})
+        navigate('/experience/:create',{replace:true})
     }
     return (
         <div className='main-funnel'>
@@ -114,7 +114,7 @@ function EditExperienceForm() {
             </div>
         </div>
         <div className='btn'>
-            <Button className='back' onClick={changePage('/experience',true)}>{t('cancel')}</Button>
+            <Button className='back' onClick={changePage('/experience/:create',true)}>{t('cancel')}</Button>
             <Button className='next' onClick={sendEditedExperienceDataToStoreHandler}>
                 {t('save')}
             </Button>

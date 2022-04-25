@@ -27,7 +27,7 @@ function EditSkillsForm() {
 	}
 	const saveSkillsToStoreHandler = () => {
 		debouncedCallback()
-		navigate('/skills',{replace:true})
+		navigate('/skills/:create',{replace:true})
 
 	}
 	return (
@@ -55,7 +55,7 @@ function EditSkillsForm() {
 				/>
 			</div>
 			<div className='btn'>
-				<Button className='back' onClick={changePage('/skills',true)}>{t('cancel')}</Button>
+				<Button className='back' onClick={changePage('/skills/:create',true)}>{t('cancel')}</Button>
 				<Button className='next' onClick={saveSkillsToStoreHandler}>
 					{t('save')}
 				</Button>

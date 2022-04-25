@@ -33,7 +33,7 @@ function EditEducationForm() {
 	}
     const sendEditedEducationDataToStoreHandler=()=>{
         dispatch(resumeActions.editEducaion(education.value))
-        navigate('/education',{replace:true})
+        navigate('/education/:create',{replace:true})
     }
     return (
         <div className='main-funnel'>
@@ -122,7 +122,7 @@ function EditEducationForm() {
 				</div>
 			</div>
 			<div className='btn'>
-				<Button className='back' onClick={changePage('/education',true)}>
+				<Button className='back' onClick={changePage('/education/:create',true)}>
 					{t('cancel')}
 				</Button>
 				<Button className='next' onClick={sendEditedEducationDataToStoreHandler}>
